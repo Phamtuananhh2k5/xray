@@ -73,7 +73,7 @@ echo "Nội dung của $config_file đã được cập nhật từ URL."
 xrayr restart
 clear
 # add vps lên vps.dualeovpn.net
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/add-Nezha.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add-Nezha.sh)
 
 # Thực hiện cập nhật DDNS ngay lập tức
 cloudflare-ddns --update-now
