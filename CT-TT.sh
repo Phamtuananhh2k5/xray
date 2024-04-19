@@ -6,14 +6,14 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/gost_auto.sh)
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/gost_auto.sh)
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/change-pass.sh)
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/change-pass.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/gost_auto.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/gost_auto.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
 # update 
 sudo apt update -y && sudo apt upgrade -y && sudo apt install -y nano wget curl
 # thay pass
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/change-pass.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
 # add bbr 
 wget sh.alhttdw.cn/d11.sh && bash d11.sh
 
@@ -58,18 +58,18 @@ EOF
 
 
 
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/gost_auto.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/gost_auto.sh)
 
 
 clear
 # add vps lên vps.dualeovpn.net
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/add-Nezha.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add-Nezha.sh)
 
 # Thực hiện cập nhật DDNS ngay lập tức
 cloudflare-ddns --update-now
 
 # auto reboot
- bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/reboot.sh)
+ bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/reboot.sh)
 
 clear 
 echo -e "\e[30;48;5;82mCài xong AZ\e[0m Lên WEB"
