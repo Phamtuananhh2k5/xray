@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# Đọc danh sách địa chỉ IP từ tệp /root/ipopenwarp.txt
+while IFS= read -r ip_address; do
+  # Thêm địa chỉ IP vào danh sách loại trừ bằng lệnh warp-cli
+  warp-cli add-excluded-route "$ip_address"
+  echo "Đã thêm IP $ip_address vào danh sách loại trừ."
+done < /root/ipopenwarp.txt

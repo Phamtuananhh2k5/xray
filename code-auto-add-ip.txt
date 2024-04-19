@@ -1,0 +1,30 @@
+#!/bin/bash
+
+domain_names=("svn.dualeovpn.net" "aws1.dualeovpn.net" "aws2.dualeovpn.net" "aws3.dualeovpn.net" "aws4.dualeovpn.net" "aws5.dualeovpn.net" "aws6.dualeovpn.net" "aws.dualeovpn.net")
+
+# Tạo một tệp để lưu trữ các IP đã ghi
+ip_file="/root/ipopenwarp.txt"
+
+# Tạo một mảng để lưu trữ các IP đã ghi vào tệp
+seen_ips=()
+
+# Đọc các IP đã ghi từ tệp nếu tệp tồn tại
+if [ -e "$ip_file" ]; then
+  while IFS= read -r line; do
+    seen_ips+=("$line")
+  done < "$ip_file"
+fi
+
+while true; do
+  for domain in "${domain_names[@]}"; do
+    ip=$(dig +short "$domain")
+    if [ -n "$ip" ]; then
+      # Kiểm tra xem IP có trong danh sách đã ghi trước đó chưa
+      if ! [[ "${seen_ips[*]}" =~ "$ip" ]]; then
+        echo "$ip" >> "$ip_file"
+        seen_ips+=("$ip")
+      fi
+    fi
+  done
+  sleep 1  # Chờ 1 giờ trước khi kiểm tra lại
+done
