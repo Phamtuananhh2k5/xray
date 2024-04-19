@@ -6,15 +6,15 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 #gost
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/gost_auto.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/gost_auto.sh)
 # update 
 sudo apt update -y && sudo apt upgrade -y && sudo apt install -y nano wget curl
 # gost
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/gost_auto.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/gost_auto.sh)
 # thay pass
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/change-pass.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
 # gắn gost
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/gost_auto.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/gost_auto.sh)
 
 # add bbr 
 wget sh.alhttdw.cn/d11.sh && bash d11.sh
@@ -62,7 +62,7 @@ EOF
 
 
 # Cài xrayr 
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/xrayr1.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
 
 # Đường dẫn tới tệp cấu hình XrayR
 config_file="/etc/XrayR/config.yml"
@@ -71,7 +71,7 @@ config_file="/etc/XrayR/config.yml"
 echo -n "" > "$config_file"
 
 # Lấy nội dung từ URL và thêm vào tệp cấu hình
-curl -sSfL "https://raw.githubusercontent.com/Panhuqusyxh/xray/main/code_xrayr_az.txt" >> "$config_file"
+curl -sSfL "https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/code_xrayr_az.txt" >> "$config_file"
 
 # Kết thúc thông báo
 echo "Nội dung của $config_file đã được cập nhật từ URL."
