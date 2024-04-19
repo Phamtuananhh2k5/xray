@@ -2,7 +2,7 @@
 
 # Kiểm tra sự tồn tại của file xrayrpro.sh
 
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/xrayr1.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
 
 
 if [ -e "xrayrpro.sh" ]; then
