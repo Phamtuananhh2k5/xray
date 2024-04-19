@@ -7,13 +7,13 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # thay pass
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/change-pass.sh)
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/gost-warp.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/gost-warp.sh)
 # update 
 sudo apt update -y && sudo apt upgrade -y && sudo apt install -y nano wget curl
 
 # auto warps
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/auto-warp-cli.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/auto-warp-cli.sh)
 
 
 # add bbr 
@@ -58,7 +58,7 @@ sv.dualeovpn.net
 EOF
 
 # Cài xrayr 
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/xrayr1.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
 
 # Đường dẫn tới tệp cấu hình XrayR
 config_file="/etc/XrayR/config.yml"
@@ -67,7 +67,7 @@ config_file="/etc/XrayR/config.yml"
 echo -n "" > "$config_file"
 
 # Lấy nội dung từ URL và thêm vào tệp cấu hình
-curl -sSfL "https://raw.githubusercontent.com/Panhuqusyxh/xray/main/code-xrayr-tiktok.txt" >> "$config_file"
+curl -sSfL "https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/code-xrayr-tiktok.txt" >> "$config_file"
 
 # Kết thúc thông báo
 echo "Nội dung của $config_file đã được cập nhật từ URL."
@@ -75,7 +75,7 @@ xrayr restart
 clear
 # add vps lên vps.dualeovpn.net
 
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/add-Nezha.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add-Nezha.sh)
   
 # Thực hiện cập nhật DDNS ngay lập tức
 cloudflare-ddns --update-now
