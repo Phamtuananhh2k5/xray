@@ -57,7 +57,7 @@ EOF
 
 
 # Cài xrayr 
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/xrayr1.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
 
 # Đường dẫn tới tệp cấu hình XrayR
 config_file="/etc/XrayR/config.yml"
