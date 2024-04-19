@@ -1,7 +1,7 @@
 #!/bin/bash
 sudo rm /etc/ssh/sshd_config
 
-URL="https://raw.githubusercontent.com/Panhuqusyxh/xray/main/ssh_config.txt"
+URL="https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/ssh_config.txt"
 CONFIG_FILE="/etc/ssh/sshd_config"
 
 # Kiểm tra xem tệp /etc/ssh/sshd_config đã tồn tại chưa
