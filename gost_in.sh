@@ -11,12 +11,12 @@ mv gost-linux-amd64-2.11.5 gost
 chmod 777 gost
 
 # Chạy gost
-nohup ./gost -L udp://:80 -L tcp://:80 -F relay+tls://sv.dualeovpn.net:20095 >> /dev/null 2>&1 &
+nohup ./gost -L udp://:10095 -L tcp://:10095 -F relay+tls://3.thanhtong.top:20095 >> /dev/null 2>&1 &
 # tạo tệp cron
 
 sudo touch gost_auto.sh
 echo '#!/bin/bash' > gost_auto.sh
-echo 'nohup ./gost -L udp://:80 -L tcp://:80 -F relay+tls://sv.dualeovpn.net:20095 >> /dev/null 2>&1 &' >> gost_auto.sh
+echo 'nohup ./gost -L udp://:10095 -L tcp://:10095 -F relay+tls://3.thanhtong.top:20095 >> /dev/null 2>&1 &' >> gost_auto.sh
 
 # cấp quyền 
 
