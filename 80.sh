@@ -7,6 +7,9 @@ if [ "$EUID" -ne 0 ]; then
 fi
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
+
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/gost-out.sh)
+
 # update 
 sudo apt update -y && sudo apt upgrade -y && sudo apt install -y nano wget curl
 # thay pass
