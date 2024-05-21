@@ -28,7 +28,7 @@ echo 'nohup ./gost -L relay+tls://:20080/127.0.0.1:80 >> /dev/null 2>&1 &' >> /r
 
 # cấp quyền 
 
-sudo chmod 777 gost_auto.sh
+sudo chmod 777 /root/gost_auto.sh
 
 # Ghi tác vụ cron đầu tiên vào tệp /root/cloudflare_cron
 echo "*/1 * * * * /usr/local/bin/cloudflare-ddns --update-now >> /root/ipcf.log 2>&1" > /root/cloudflare_cron
