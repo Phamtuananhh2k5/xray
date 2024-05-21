@@ -18,13 +18,13 @@ nohup ./gost -L relay+tls://:20010/127.0.0.1:10010 >> /dev/null 2>&1 &
 nohup ./gost -L relay+tls://:20080/127.0.0.1:80 >> /dev/null 2>&1 &
 # tạo tệp cron
 
-sudo touch gost_auto.sh
+sudo touch /root/gost_auto.sh
 echo '#!/bin/bash' > gost_auto.sh
-echo 'nohup ./gost -L udp://:10095 -L tcp://:10095 -F relay+tls://103.140.249.182:20095 >> /dev/null 2>&1 &' >> gost_auto.sh
-echo 'nohup ./gost -L relay+tls://:20095/127.0.0.1:10095 >> /dev/null 2>&1 &' >> gost_auto.sh
-echo 'nohup ./gost -L udp://:10010 -L tcp://:10010 -F relay+tls://103.140.249.182:20010 >> /dev/null 2>&1 &' >> gost_auto.sh
-echo 'nohup ./gost -L relay+tls://:20010/127.0.0.1:10010 >> /dev/null 2>&1 &' >> gost_auto.sh
-echo 'nohup ./gost -L relay+tls://:20080/127.0.0.1:80 >> /dev/null 2>&1 &' >> gost_auto.sh
+echo 'nohup ./gost -L udp://:10095 -L tcp://:10095 -F relay+tls://103.140.249.182:20095 >> /dev/null 2>&1 &' >> /root/gost_auto.sh
+echo 'nohup ./gost -L relay+tls://:20095/127.0.0.1:10095 >> /dev/null 2>&1 &' >> /root/gost_auto.sh
+echo 'nohup ./gost -L udp://:10010 -L tcp://:10010 -F relay+tls://103.140.249.182:20010 >> /dev/null 2>&1 &' >> /root/gost_auto.sh
+echo 'nohup ./gost -L relay+tls://:20010/127.0.0.1:10010 >> /dev/null 2>&1 &' >> /root/gost_auto.sh
+echo 'nohup ./gost -L relay+tls://:20080/127.0.0.1:80 >> /dev/null 2>&1 &' >> /root/gost_auto.sh
 
 # cấp quyền 
 
