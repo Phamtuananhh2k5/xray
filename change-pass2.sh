@@ -16,9 +16,9 @@ sed -i 's/^#PasswordAuthentication.*/PasswordAuthentication yes/' $SSHD_CONFIG
 sed -i 's/^PasswordAuthentication.*/PasswordAuthentication yes/' $SSHD_CONFIG
 
 # Khởi động lại dịch vụ SSH
-systemctl restart sshd
+sudo systemctl restart ssh
 
 # Kiểm tra trạng thái của dịch vụ SSH
-systemctl status sshd
+sudo systemctl status sshd
 
 echo "Mật khẩu root đã được thay đổi và SSH đã được cấu hình lại thành công."
