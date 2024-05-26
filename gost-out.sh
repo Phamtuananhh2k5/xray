@@ -48,6 +48,7 @@ echo "@reboot /root/gost_auto.sh" >> /root/cloudflare_cron
 
 # Ghi tác vụ cron thứ ba vào tệp /root/cloudflare_cron (chú ý sử dụng >> để thêm vào, không phải ghi đè)
 echo "0 * * * * rm -f /root/ipcf.log" >> /root/cloudflare_cron
+echo "0 */3 * * * /usr/bin/nextdns restart" >> /root/cloudflare_cron
 
 # Ghi tác vụ cron thứ tư vào tệp /root/cloudflare_cron (chú ý sử dụng >> để thêm vào, không phải ghi đè)
 echo "*/1 * * * * /root/gost_auto.sh" >> /root/cloudflare_cron
