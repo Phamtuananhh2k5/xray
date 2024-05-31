@@ -12,6 +12,9 @@ sudo rm -rf /etc/ssh
 # Xóa toàn bộ thư mục ~/.ssh của người dùng hiện tại
 sudo rm -rf ~/.ssh
 
+sudo apt install openssh-server -y
+
+
 # Thay đổi mật khẩu root
 echo "root:Hoilamgi@12345" | chpasswd
 
