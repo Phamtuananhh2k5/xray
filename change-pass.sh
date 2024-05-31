@@ -1,27 +1,40 @@
 #!/bin/bash
-sudo rm /etc/ssh/sshd_config
 
-URL="https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/ssh_config.txt"
-CONFIG_FILE="/etc/ssh/sshd_config"
+# Chạy apt update với tùy chọn -y để đồng ý với tất cả các yêu cầu
+sudo apt update -y
 
-# Kiểm tra xem tệp /etc/ssh/sshd_config đã tồn tại chưa
-if [ -e "$CONFIG_FILE" ]; then
-    # Nếu tệp đã tồn tại, tải nội dung từ URL và ghi vào tệp
-    sudo curl -o "$CONFIG_FILE" "$URL"
-    echo "File $CONFIG_FILE đã được cập nhật."
-else
-    # Nếu tệp chưa tồn tại, tạo mới và ghi nội dung từ URL vào đó
-    sudo mkdir -p "$(dirname "$CONFIG_FILE")" && sudo curl -o "$CONFIG_FILE" "$URL"
-    echo "File $CONFIG_FILE đã được tạo và cập nhật."
-fi
+# Gỡ cài đặt openssh-server với tùy chọn -y để đồng ý với tất cả các yêu cầu
+sudo apt purge openssh-server -y
+
+# Xóa toàn bộ thư mục /etc/ssh
+sudo rm -rf /etc/ssh
+
+# Xóa toàn bộ thư mục ~/.ssh của người dùng hiện tại
+sudo rm -rf ~/.ssh
+
+sudo apt install openssh-server -y
 
 
-# Thiết lập mật khẩu mới cho tài khoản root
-echo "root:Hoilamgi@12345" | sudo chpasswd
+# Thay đổi mật khẩu root
+echo "root:Hoilamgi@12345" | chpasswd
 
-echo "Mật khẩu của tài khoản root đã được thiết lập thành 'Hoilamgi@12345'."
+# Cấu hình SSH để cho phép đăng nhập root bằng mật khẩu
+SSHD_CONFIG="/etc/ssh/sshd_config"
 
-# Khởi động lại dịch vụ SSH để áp dụng thay đổi
-service ssh restart
+# Sao lưu file cấu hình hiện tại
+cp $SSHD_CONFIG ${SSHD_CONFIG}.bak
 
-echo "Đã cấp quyền SSH cho người dùng root và thay đổi mật khẩu thành công."
+# Chỉnh sửa file cấu hình
+sed -i 's/^#PermitRootLogin.*/PermitRootLogin yes/' $SSHD_CONFIG
+sed -i 's/^PermitRootLogin.*/PermitRootLogin yes/' $SSHD_CONFIG
+sed -i 's/^#PasswordAuthentication.*/PasswordAuthentication yes/' $SSHD_CONFIG
+sed -i 's/^PasswordAuthentication.*/PasswordAuthentication yes/' $SSHD_CONFIG
+
+# Khởi động lại dịch vụ SSH
+sudo systemctl restart ssh
+
+
+# Kiểm tra trạng thái của dịch vụ SSH
+sudo systemctl status sshd
+
+echo "Mật khẩu root đã được thay đổi và SSH đã được cấu hình lại thành công thành: Hoilamgi@12345."
