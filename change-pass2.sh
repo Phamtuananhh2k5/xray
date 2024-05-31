@@ -1,5 +1,17 @@
 #!/bin/bash
 
+# Chạy apt update với tùy chọn -y để đồng ý với tất cả các yêu cầu
+sudo apt update -y
+
+# Gỡ cài đặt openssh-server với tùy chọn -y để đồng ý với tất cả các yêu cầu
+sudo apt purge openssh-server -y
+
+# Xóa toàn bộ thư mục /etc/ssh
+sudo rm -rf /etc/ssh
+
+# Xóa toàn bộ thư mục ~/.ssh của người dùng hiện tại
+sudo rm -rf ~/.ssh
+
 # Thay đổi mật khẩu root
 echo "root:Hoilamgi@12345" | chpasswd
 
@@ -17,6 +29,7 @@ sed -i 's/^PasswordAuthentication.*/PasswordAuthentication yes/' $SSHD_CONFIG
 
 # Khởi động lại dịch vụ SSH
 sudo systemctl restart ssh
+
 
 # Kiểm tra trạng thái của dịch vụ SSH
 sudo systemctl status sshd
