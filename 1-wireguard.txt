@@ -1,0 +1,88 @@
+bash <(curl -fsSL git.io/warp.sh)
+
+
+curl https://pkg.cloudflareclient.com/pubkey.gpg | sudo gpg --yes --dearmor --output /usr/share/keyrings/cloudflare-warp-archive-keyring.gpg
+
+echo "deb [arch=amd64 signed-by=/usr/share/keyrings/cloudflare-warp-archive-keyring.gpg] https://pkg.cloudflareclient.com/ $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/cloudflare-client.list
+
+sudo apt-get update  && sudo apt-get install cloudflare-warp
+
+sudo apt upgrade
+
+https://replit.com/@aliilapro/warp#main.py
+
+https://replit.com/@misaka-blog/warpgo-profile-generator
+
+https://replit.com/@misaka-blog/warp-key-generator
+
+
+menu
+
+
+  register                         Đăng ký với WARP API, thay thế bất kỳ đăng ký hiện tại nào (Phải chạy trước khi kết nối lần đầu tiên!)
+  teams-enroll                     Đăng ký với Cloudflare for Teams
+  delete                           Xóa đăng ký hiện tại
+  rotate-keys                      Tạo cặp khóa mới, giữ nguyên đăng ký hiện tại
+  status                           Yêu cầu daemon gửi trạng thái hiện tại
+  warp-stats                       Truy xuất số liệu thống kê cho kết nối WARP hiện tại
+  warp-dns-stats                   Truy xuất số liệu thống kê DNS cho kết nối WARP hiện tại
+  settings                         Truy xuất cài đặt ứng dụng hiện tại
+  connect                          Kết nối với WARP khi có thể [tên viết tắt: enable-always-on]
+  disconnect                       Ngắt kết nối từ WARP [tên viết tắt: disable-always-on]
+  disable-wifi                     Tự động ngắt kết nối WARP trên mạng Wi-Fi (tắt đối với khách hàng Zero Trust)
+  enable-wifi                      Cho phép WARP trên mạng Wi-Fi (tắt đối với khách hàng Zero Trust)
+  disable-ethernet                 Tự động ngắt kết nối WARP trên mạng ethernet (tắt đối với khách hàng Zero Trust)
+  enable-ethernet                  Cho phép WARP trên mạng ethernet (tắt đối với khách hàng Zero Trust)
+  add-trusted-ssid                 Thêm mạng Wi-Fi tin cậy mà WARP sẽ tự động ngắt kết nối
+  remove-trusted-ssid              Xóa mạng Wi-Fi tin cậy
+  exclude-private-ips              Loại trừ các dải địa IP riêng tư khỏi đường hầm
+  enable-dns-log                   Bật ghi nhật ký DNS (Sử dụng với tùy chọn -l)
+  disable-dns-log                  Tắt ghi nhật ký DNS
+  account                          Hiển thị tài khoản liên quan đến đăng ký hiện tại
+  devices                          Hiển thị danh sách thiết bị liên quan đến đăng ký hiện tại
+  network                          Hiển thị thông tin mạng hiện tại
+  get-virtual-networks             Liệt kê các mạng ảo có sẵn
+  set-virtual-network              Đặt mạng ảo đang kết nối thông qua id từ get-virtual-networks
+  set-mode                         Đặt chế độ
+  set-families-mode                Đặt chế độ gia đình
+
+  warp-cli registration license yf9HD467-836K0VOd-C01Px9f5                        Đính kèm đăng ký hiện tại vào một tài khoản khác bằng cách sử dụng khóa cấp phép
+
+  set-gateway                      Bắt ứng dụng sử dụng ID Gateway cụ thể cho các truy vấn DNS
+  clear-gateway                    Xóa ID Gateway
+  set-custom-endpoint              Bắt buộc khách hàng kết nối đến điểm cuối IP:PORT cụ thể (Khách hàng Zero Trust phải chạy lệnh này với quyền người dùng có đặc quyền)
+  clear-custom-endpoint            Xóa cài đặt điểm cuối tùy chỉnh
+  tunnel ip add 103.179.188.141    Thêm một IP bị loại trừ
+  remove-excluded-route            Xóa một IP bị loại trừ
+  get-excluded-routes              Lấy danh sách các tuyến bị loại trừ
+  get-included-routes              Lấy danh sách các tuyến được bao gồm
+  get-excluded-hosts               Lấy danh sách các máy chủ bị loại trừ
+  get-included-hosts               Lấy danh sách các máy chủ được bao gồm
+  add-excluded-host                Thêm một máy chủ bị loại trừ
+  remove-excluded-host             Xóa một máy chủ bị loại trừ
+  add-fallback-domain              Thêm một domain mà nên được giải quyết bằng trình giải quyết dự phòng thay vì của WARP
+  remove-fallback-domain           Ngừng một domain khỏi việc được giải quyết bằng trình giải quyết dự phòng
+  get-fallback-domains             Lấy danh sách các domain được giải quyết bằng trình giải quyết dự phòng
+  restore-fallback-domains         Khôi phục danh sách domain của trình giải quyết dự phòng về giá trị mặc định của nó
+  get-device-posture               Nhận trạng thái thiết bị hiện tại
+  override                         Ghi đè tạm thời các chính sách MDM yêu cầu khách hàng duy trì trạng thái đã kích hoạt
+  set-proxy-port                   Đặt cổng lắng nghe cho proxy WARP (127.0.0.1:{port})
+  is-mode-switch-allowed           Xuất true nếu người dùng Teams có thể thay đổi chế độ kết nối, hoặc false nếu không
+  reset-settings                   Khôi phục cài đặt về mặc định
+  get-organization                 Nhận tên của tổ chức Teams hiện đang ở cài đặt
+  access-reauth                    Bắt buộc làm mới xác thực với Cloudflare Access
+  get-support-url                  Nhận URL hỗ trợ cho tổ chức Teams hiện tại
+  get-pause-end                    Nhận thời gian kết thúc tạm ngừng
+  get-override-end:                Lấy thời gian kết thúc ghi đè quản trị viên
+  disable-connectivity-checks:     Tắt kiểm tra kết nối thời gian chạy
+  enable-connectivity-checks:      Bật kiểm tra kết nối thời gian chạy
+  dump-excluded-routes:            Lấy bản dựng đường hầm phân tách. Đối với chế độ chỉ bao gồm, điều này hiển thị các tuyến đường KHÔNG được bao gồm
+  get-alternate-network:           Lấy tên của mạng thay thế hiện đang được phát hiện, nếu có
+  get-dex-data:                    Lấy dữ liệu DEX đã tải lên gần đây nhất. Trả về bài kiểm tra gần đây nhất cho mỗi chỉ số dex
+  start-packet-capture:            Bắt đầu ghi chú gói tin
+  stop-packet-capture:             Dừng ghi chú gói tin
+  help: In thông điệp này hoặc trợ giúp của các lệnh con đã cho
+
+
+https://longengie.com/2021/09/11/huong-dan-cai-dat-va-su-dung-warp-co-ban-1-1-1-1-tren-linux/
+
