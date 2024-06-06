@@ -68,8 +68,6 @@ bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add
 # Thực hiện cập nhật DDNS ngay lập tức
 cloudflare-ddns --update-now
 
-# auto reboot
- bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/reboot.sh)
 
 clear 
 echo -e "\e[30;48;5;82mCài xong AZ\e[0m Lên WEB"
