@@ -6,8 +6,8 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/gost_auto.sh)
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/gost_auto.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/CT_TT_GOST.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/CT_TT_GOST.sh)
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
 # update 
@@ -57,8 +57,7 @@ EOF
 
 
 
-
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/gost_auto.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/CT_TT_GOST.sh)
 
 
 clear
