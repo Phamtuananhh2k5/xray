@@ -36,6 +36,10 @@ echo 'nohup ./gost -L relay+tls://:20089/127.0.0.1:10089 >> /dev/null 2>&1 &' >>
 
 echo 'nohup ./gost -L relay+tls://:20080/127.0.0.1:80 >> /dev/null 2>&1 &' >> /root/gost_auto.sh
 
+
+echo 'ps aux | grep gost' >> /root/gost_auto.sh
+
+
 # cấp quyền 
 
 sudo chmod 777 /root/gost_auto.sh
