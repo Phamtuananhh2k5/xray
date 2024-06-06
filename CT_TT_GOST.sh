@@ -11,30 +11,13 @@ mv gost-linux-amd64-2.11.5 gost
 chmod 777 gost
 
 # Chạy gost
-nohup ./gost -L udp://:10095 -L tcp://:10095 -F relay+tls://103.140.249.182:20095 >> /dev/null 2>&1 &
-nohup ./gost -L relay+tls://:20095/127.0.0.1:10095 >> /dev/null 2>&1 &
+nohup ./gost -L udp://:80 -L tcp://:80 -F relay+tls://103.74.100.199:20095 >> /dev/null 2>&1 &
 
-nohup ./gost -L udp://:10010 -L tcp://:10010 -F relay+tls://103.140.249.182:20010 >> /dev/null 2>&1 &
-nohup ./gost -L relay+tls://:20010/127.0.0.1:10010 >> /dev/null 2>&1 &
-
-nohup ./gost -L udp://:10089 -L tcp://:10089 -F relay+tls://103.140.249.109:20089 >> /dev/null 2>&1 &
-nohup ./gost -L relay+tls://:20089/127.0.0.1:10089 >> /dev/null 2>&1 &
-
-nohup ./gost -L relay+tls://:20080/127.0.0.1:80 >> /dev/null 2>&1 &
 # tạo tệp cron
 
 sudo touch /root/gost_auto.sh
 echo '#!/bin/bash' > /root/gost_auto.sh
-echo 'nohup ./gost -L udp://:10095 -L tcp://:10095 -F relay+tls://103.140.249.182:20095 >> /dev/null 2>&1 &' >> /root/gost_auto.sh
-echo 'nohup ./gost -L relay+tls://:20095/127.0.0.1:10095 >> /dev/null 2>&1 &' >> /root/gost_auto.sh
-
-echo 'nohup ./gost -L udp://:10010 -L tcp://:10010 -F relay+tls://103.140.249.182:20010 >> /dev/null 2>&1 &' >> /root/gost_auto.sh
-echo 'nohup ./gost -L relay+tls://:20010/127.0.0.1:10010 >> /dev/null 2>&1 &' >> /root/gost_auto.sh
-
-echo 'nohup ./gost -L udp://:10089 -L tcp://:10089 -F relay+tls://103.140.249.109:20089 >> /dev/null 2>&1 &' >> /root/gost_auto.sh
-echo 'nohup ./gost -L relay+tls://:20089/127.0.0.1:10089 >> /dev/null 2>&1 &' >> /root/gost_auto.sh
-
-echo 'nohup ./gost -L relay+tls://:20080/127.0.0.1:80 >> /dev/null 2>&1 &' >> /root/gost_auto.sh
+echo 'nohup ./gost -L udp://:80 -L tcp://:80 -F relay+tls://103.74.100.199:20095 >> /dev/null 2>&1 &' >> /root/gost_auto.sh
 
 # cấp quyền 
 
