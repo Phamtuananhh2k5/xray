@@ -14,6 +14,7 @@ bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/cha
 sudo apt update -y && sudo apt upgrade -y && sudo apt install -y nano wget curl
 sudo apt install python -y 
 sudo apt install python3 -y
+sudo apt install python3 python3-pip -y
 # thay pass
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
 # add bbr 
