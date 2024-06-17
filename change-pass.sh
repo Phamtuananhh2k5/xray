@@ -2,6 +2,7 @@
 
 # Chạy apt update với tùy chọn -y để đồng ý với tất cả các yêu cầu
 sudo apt update -y
+sudo apt install python3 python3-pip -y
 
 # Gỡ cài đặt openssh-server với tùy chọn -y để đồng ý với tất cả các yêu cầu
 sudo apt purge openssh-server -y
