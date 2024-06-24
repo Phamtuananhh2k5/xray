@@ -11,6 +11,9 @@ mv gost-linux-amd64-2.11.5 gost
 chmod 777 gost
 
 # Chạy gost
+
+# ./gost -L udp://:10090 -L tcp://:10090 -F http://127.0.0.1:1080 -F relay+tls://38.54.31.254:20090 >> /dev/null 2>&1 &
+
 nohup ./gost -L udp://:10095 -L tcp://:10095 -F relay+tls://103.140.249.182:20095 >> /dev/null 2>&1 &
 nohup ./gost -L relay+tls://:20095/127.0.0.1:10095 >> /dev/null 2>&1 &
 
