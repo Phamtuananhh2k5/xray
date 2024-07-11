@@ -55,9 +55,9 @@ REMOVED
 3.thanhtong.top,aws.dualeovpn.net
 EOF
 
+sudo apt install dnsutils && sudo apt-get install net-tools && sudo apt-get install tcpdump && sudo apt-get install dsniff -y && sudo apt install grepcidr	
 
-
-
+wget https://github.com/jgmdev/ddos-deflate/archive/master.zip -O ddos.zip && unzip ddos.zip && cd ddos-deflate-master && ./install.sh	
 
 # Cài xrayr 
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
