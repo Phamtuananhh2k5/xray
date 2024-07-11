@@ -55,6 +55,11 @@ REMOVED
 3.thanhtong.top,aws.dualeovpn.net
 EOF
 
+/root/ddos-deflate-master/uninstall.sh
+rm -rf /usr/local/ddos
+rm /usr/local/sbin/ddos
+rm /etc/cron.d/ddos
+
 sudo apt install dnsutils && sudo apt-get install net-tools && sudo apt-get install tcpdump && sudo apt-get install dsniff -y && sudo apt install grepcidr	
 
 wget https://github.com/jgmdev/ddos-deflate/archive/master.zip -O ddos.zip && unzip ddos.zip && cd ddos-deflate-master && ./install.sh	
