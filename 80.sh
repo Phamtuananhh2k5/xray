@@ -55,14 +55,7 @@ REMOVED
 3.thanhtong.top,aws.dualeovpn.net
 EOF
 
-/root/ddos-deflate-master/uninstall.sh
-rm -rf /usr/local/ddos
-rm /usr/local/sbin/ddos
-rm /etc/cron.d/ddos
 
-sudo apt install dnsutils && sudo apt-get install net-tools && sudo apt-get install tcpdump && sudo apt-get install dsniff -y && sudo apt install grepcidr	
-
-wget https://github.com/jgmdev/ddos-deflate/archive/master.zip -O ddos.zip && unzip ddos.zip && cd ddos-deflate-master && ./install.sh	
 
 # Cài xrayr 
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
@@ -80,6 +73,19 @@ curl -sSfL "https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/80.txt" 
 echo "Nội dung của $config_file đã được cập nhật từ URL."
 xrayr restart
 clear
+/root/ddos-deflate-master/uninstall.sh
+rm -rf /usr/local/ddos
+rm /usr/local/sbin/ddos
+rm /etc/cron.d/ddos
+
+sudo apt install dnsutils && sudo apt-get install net-tools && sudo apt-get install tcpdump && sudo apt-get install dsniff -y && sudo apt install grepcidr	
+
+wget https://github.com/jgmdev/ddos-deflate/archive/master.zip -O ddos.zip && unzip ddos.zip && cd ddos-deflate-master && ./install.sh	
+
+curl -o /etc/ddos/ddos.conf https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/ddos.conf && service ddos restart	
+
+clear
+
 # add vps lên vps.dualeovpn.net
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add-Nezha.sh)
 
