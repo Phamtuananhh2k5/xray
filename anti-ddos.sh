@@ -18,3 +18,6 @@ sudo chmod +x /etc/anti-ddos/check-ddos.sh
 sudo chmod 777 /etc/anti-ddos/check-ddos.sh
 
 
+sudo curl -o /etc/anti-ddos/check-ddos.sh https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/anti-ddos.txt
+sudo chmod +x /etc/anti-ddos/check-ddos.sh
+
