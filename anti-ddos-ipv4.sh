@@ -73,4 +73,4 @@ sudo iptables -t security -F
 sudo iptables -t security -X
 EOF' && \
 sudo chmod +x /etc/anti-ddos/script.sh && \
-(crontab -l ; echo "0 * * * * /bin/bash /etc/anti-ddos/script.sh") | sudo crontab -
+(crontab -l ; echo "0 * * * * /etc/anti-ddos/script.sh") | sudo crontab -
