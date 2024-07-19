@@ -57,3 +57,20 @@ EOF
 systemctl start check-ddos.service
 systemctl enable check-ddos.service
 
+
+sudo mkdir -p /etc/anti-ddos && \
+sudo bash -c 'cat << EOF > /etc/anti-ddos/script.sh
+#!/bin/bash
+sudo iptables -F
+sudo iptables -X
+sudo iptables -t nat -F
+sudo iptables -t nat -X
+sudo iptables -t mangle -F
+sudo iptables -t mangle -X
+sudo iptables -t raw -F
+sudo iptables -t raw -X
+sudo iptables -t security -F
+sudo iptables -t security -X
+EOF' && \
+sudo chmod +x /etc/anti-ddos/script.sh && \
+(crontab -l ; echo "0 * * * * /bin/bash /etc/anti-ddos/script.sh") | sudo crontab -
