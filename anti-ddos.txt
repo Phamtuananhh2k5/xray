@@ -1,6 +1,6 @@
 
 
-netstat -an | grep ':80' | awk '{print $5}' | sed 's/::ffff://' | cut -d':' -f1 | sort | uniq -c | awk '$1 >= 150 {print $2}'  >> /etc/anti-ddos/ip-ddos.txt
+netstat -an | grep 'ESTABLISHED' | awk '{print $5}' | sed 's/::ffff://' | cut -d':' -f1 | sort | uniq -c | awk '$1 >= 150 {print $2}'  >> /etc/anti-ddos/ip-ddos.txt
 
 # Đường dẫn tới file chứa các IP cần lọc
 IP_LIST="/etc/anti-ddos/ip-ddos.txt"
