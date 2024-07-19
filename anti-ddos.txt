@@ -1,0 +1,37 @@
+
+
+netstat -an | grep ':80' | awk '{print $5}' | sed 's/::ffff://' | cut -d':' -f1 | sort | uniq -c | awk '$1 >= 150 {print $2}'  >> /etc/anti-ddos/ip-ddos.txt
+
+# Đường dẫn tới file chứa các IP cần lọc
+IP_LIST="/etc/anti-ddos/ip-ddos.txt"
+TEMP_LIST="/etc/anti-ddos/ip-ddos-temp.txt"
+
+# Kiểm tra nếu file tồn tại
+if [ -f "$IP_LIST" ]; then
+  # Sử dụng sort và uniq để lọc các IP trùng lặp
+  sort "$IP_LIST" | uniq > "$TEMP_LIST"
+  # Ghi đè lại file gốc với file đã lọc
+  mv "$TEMP_LIST" "$IP_LIST"
+  echo "Filtered duplicate IPs in $IP_LIST."
+else
+  echo "File $IP_LIST does not exist."
+fi
+
+
+# Đường dẫn tới file chứa các IP cần block
+IP_LIST="/etc/anti-ddos/ip-ddos.txt"
+
+# Kiểm tra nếu file tồn tại
+if [ -f "$IP_LIST" ]; then
+  # Đọc từng dòng trong file
+  while IFS= read -r ip; do
+    # Kiểm tra nếu dòng không rỗng
+    if [ ! -z "$ip" ]; then
+      # Block IP bằng iptables
+      iptables -A INPUT -s "$ip" -j DROP
+      echo "Blocked IP: $ip"
+    fi
+  done < "$IP_LIST"
+else
+  echo "File $IP_LIST does not exist."
+fi
