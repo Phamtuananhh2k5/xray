@@ -15,7 +15,7 @@ check_cpu_load() {
     fi
 }
 
-check_cpu_load' > reboot1.sh
+check_cpu_load' > /root/reboot1.sh
 
 chmod 777 reboot1.sh
 
