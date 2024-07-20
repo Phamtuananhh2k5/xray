@@ -25,20 +25,6 @@ sudo chmod +x /etc/anti-ddos/check-ddos.sh
 # Tạo thư mục nếu chưa tồn tại
 mkdir -p /etc/anti-ddos
 
-# Tạo và ghi nội dung vào file /etc/anti-ddos/run_check_ddos.sh
-cat << 'EOF' > /etc/anti-ddos/run_check_ddos.sh
-#!/bin/bash
-
-while true; do
-    /etc/anti-ddos/check-ddos.sh
-    sleep 1
-done
-EOF
-
-# Đặt quyền thực thi cho script
-chmod +x /etc/anti-ddos/run_check_ddos.sh
-
-
 sudo mkdir -p /etc/anti-ddos && \
 sudo bash -c 'cat << EOF > /etc/anti-ddos/script.sh
 #!/bin/bash
