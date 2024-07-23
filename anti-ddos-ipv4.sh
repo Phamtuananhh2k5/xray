@@ -1,5 +1,5 @@
 #!/bin/bash
-
+sudo apt update
 sudo apt-get install net-tools -y
 sudo apt-get install grep -y
 sudo apt-get install gawk -y
