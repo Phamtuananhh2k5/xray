@@ -1,4 +1,11 @@
 #!/bin/bash
+
+sudo apt-get install net-tools -y
+sudo apt-get install grep -y
+sudo apt-get install gawk -y
+sudo apt-get install sed -y
+sudo apt-get install coreutils -y
+
 # Đường dẫn tới thư mục cần kiểm tra
 DIR="/etc/anti-ddos"
 
