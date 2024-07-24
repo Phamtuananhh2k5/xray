@@ -35,16 +35,16 @@ mkdir -p /etc/anti-ddos
 sudo mkdir -p /etc/anti-ddos && \
 sudo bash -c 'cat << EOF > /etc/anti-ddos/script.sh
 #!/bin/bash
-sudo iptables -F
-sudo iptables -X
-sudo iptables -t nat -F
-sudo iptables -t nat -X
-sudo iptables -t mangle -F
-sudo iptables -t mangle -X
-sudo iptables -t raw -F
-sudo iptables -t raw -X
-sudo iptables -t security -F
-sudo iptables -t security -X
+sudo iptables -w -F
+sudo iptables -w -X
+sudo iptables -w -t nat -F
+sudo iptables -w -t nat -X
+sudo iptables -w -t mangle -F
+sudo iptables -w -t mangle -X
+sudo iptables -w -t raw -F
+sudo iptables -w -t raw -X
+sudo iptables -w -t security -F
+sudo iptables -w -t security -X
 EOF' && \
 sudo chmod +x /etc/anti-ddos/script.sh && \
 (crontab -l ; echo "0 * * * * /etc/anti-ddos/script.sh") | sudo crontab - && \
