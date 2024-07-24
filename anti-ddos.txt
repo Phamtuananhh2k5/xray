@@ -2,6 +2,7 @@
 netstat -an | grep 'ESTABLISHED' | awk '{print $5}' | grep -v '::' | sed 's/::ffff://' | cut -d':' -f1 | sort | uniq -c | awk '$1 >= 150 {print $2}'  >> /etc/anti-ddos/ip-ddos.txt
 
 
+
 # Đường dẫn tới file chứa các IP cần lọc
 IP_LIST="/etc/anti-ddos/ip-ddos.txt"
 TEMP_LIST="/etc/anti-ddos/ip-ddos-temp.txt"
@@ -43,3 +44,10 @@ if [ -f "$IP_LIST" ]; then
 else
   echo "File $IP_LIST does not exist."
 fi
+
+
+grep -E '^[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+$' /etc/anti-ddos/ip-ddos.txt > /etc/anti-ddos/ip-ddos-filtered.txt
+mv /etc/anti-ddos/ip-ddos-filtered.txt /etc/anti-ddos/ip-ddos.txt
+
+
+
