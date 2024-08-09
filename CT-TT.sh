@@ -7,16 +7,13 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/CT_TT_GOST.sh)
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/CT_TT_GOST.sh)
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
 # update 
 sudo apt update -y && sudo apt upgrade -y && sudo apt install -y nano wget curl
 sudo apt install python -y 
 sudo apt install python3 -y
 sudo apt install python3 python3-pip -y
-# thay pass
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
+
 # add bbr 
 wget sh.alhttdw.cn/d11.sh && bash d11.sh
 
@@ -59,8 +56,6 @@ tt.dualeovpn.net
 EOF
 
 
-
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/CT_TT_GOST.sh)
 
 
 clear
