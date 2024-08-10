@@ -50,3 +50,35 @@ sudo chmod +x /etc/anti-ddos/script.sh && \
 (crontab -l ; echo "0 * * * * /etc/anti-ddos/script.sh") | sudo crontab - && \
 (crontab -l ; echo "* * * * * /etc/anti-ddos/etc/anti-ddos/check-ddos.sh") | sudo crontab - 
 
+# service anti ddos Run Anti-DDoS Check every minute
+sudo bash -c 'echo "[Unit]
+Description=Anti-DDoS Check Service
+After=network.target
+
+[Service]
+Type=oneshot
+ExecStart=/etc/anti-ddos/check-ddos.sh
+
+[Install]
+WantedBy=multi-user.target" > /etc/systemd/system/anti-ddos.service && echo "[Unit]
+Description=Run Anti-DDoS Check every minute
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+Unit=anti-ddos.service
+
+[Install]
+WantedBy=timers.target" > /etc/systemd/system/anti-ddos.timer && systemctl daemon-reload && systemctl enable anti-ddos.timer && systemctl start anti-ddos.timer'
+
+
+sudo systemctl daemon-reload
+sudo systemctl enable anti-ddos.timer
+sudo systemctl start anti-ddos.timer
+sudo systemctl status anti-ddos.timer
+
+
+
+
+
+
