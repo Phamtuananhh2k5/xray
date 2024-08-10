@@ -1,4 +1,4 @@
-
+#!/bin/bash
 netstat -an | grep 'ESTABLISHED' | awk '{print $5}' | grep -v '::' | sed 's/::ffff://' | cut -d':' -f1 | sort | uniq -c | awk '$1 >= 150 {print $2}'  >> /etc/anti-ddos/ip-ddos.txt
 
 
