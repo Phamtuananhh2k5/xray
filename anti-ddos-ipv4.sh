@@ -77,6 +77,31 @@ sudo systemctl enable anti-ddos.timer
 sudo systemctl start anti-ddos.timer
 sudo systemctl status anti-ddos.timer
 
+sudo bash -c 'echo "[Unit]
+Description=Delete /etc/anti-ddos/script.sh every hour
+
+[Service]
+Type=oneshot
+ExecStart=/bin/rm -f /etc/anti-ddos/script.sh
+
+[Install]
+WantedBy=multi-user.target" > /etc/systemd/system/delete-script.service && echo "[Unit]
+Description=Run delete-script.service every hour
+
+[Timer]
+OnBootSec=1h
+OnUnitActiveSec=1h
+Unit=delete-script.service
+
+[Install]
+WantedBy=timers.target" > /etc/systemd/system/delete-script.timer && systemctl daemon-reload && systemctl enable delete-script.timer && systemctl start delete-script.timer'
+
+
+
+sudo systemctl daemon-reload
+sudo systemctl enable delete-script.timer
+sudo systemctl start delete-script.timer
+sudo systemctl status delete-script.timer
 
 
 
