@@ -7,5 +7,5 @@ iptables block quốc gia
 
 cấu hình nginx block 
 
-limit, url path, browser
+limit, url path, browser, method
 
