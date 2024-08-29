@@ -1,0 +1,11 @@
+
+sudo ipset create open hash:net maxelem 1000000
+
+Back ngược file ipset
+
+iptables block quốc gia
+
+cấu hình nginx block 
+
+limit, url path, browser
+
