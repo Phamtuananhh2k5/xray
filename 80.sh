@@ -53,7 +53,7 @@ cloudflare-ddns --configure << EOF
 K
 dcmnmmmchkh@gmail.com
 REMOVED
-3.thanhtong.top
+all.xalach.xyz
 EOF
 
 
