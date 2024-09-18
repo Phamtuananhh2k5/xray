@@ -7,7 +7,10 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Update and install required packages
-sudo apt update -y && sudo apt upgrade -y && sudo apt install -y net-tools grep gawk sed coreutils
+sudo apt update -y && sudo apt upgrade -y && sudo apt install -y net-tools grep gawk sed coreutils tuned 
+
+sudo systemctl enable tuned && sudo systemctl start tuned && sudo tuned-adm profile throughput-performance
+
 
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/crontab.sh)
