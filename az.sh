@@ -5,15 +5,18 @@ if [ "$EUID" -ne 0 ]; then
     echo "Bạn không đang ở root, hãy đăng nhập vào tài khoản root để thực hiện lệnh này."
     exit 1
 fi
-#gost
-# update 
-sudo apt update -y && sudo apt upgrade -y && sudo apt install -y nano wget curl
-# gost
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/gost_auto.sh)
-# thay pass
+
+# Update and install required packages
+sudo apt update -y && sudo apt upgrade -y && sudo apt install -y net-tools grep gawk sed coreutils tuned 
+
+sudo systemctl enable tuned && sudo systemctl start tuned && sudo tuned-adm profile throughput-performance
+
+
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
-# gắn gost
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/gost_auto.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/crontab.sh)
+
+bash <(curl -s https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/anti-ddos-ipv4.sh)
+
 
 # add bbr 
 wget sh.alhttdw.cn/d11.sh && bash d11.sh
@@ -53,11 +56,8 @@ cloudflare-ddns --configure << EOF
 K
 dcmnmmmchkh@gmail.com
 REMOVED
-svn.dualeovpn.net,aws1.dualeovpn.net,aws2.dualeovpn.net,aws3.dualeovpn.net,aws4.dualeovpn.net,aws5.dualeovpn.net,aws6.dualeovpn.net,aws.dualeovpn.net
+az.rauxanh.site
 EOF
-
-
-
 
 
 # Cài xrayr 
@@ -70,19 +70,30 @@ config_file="/etc/XrayR/config.yml"
 echo -n "" > "$config_file"
 
 # Lấy nội dung từ URL và thêm vào tệp cấu hình
-curl -sSfL "https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/code_xrayr_az.txt" >> "$config_file"
+curl -sSfL "https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/code_xrayr_az.txt" >> "$config_file"
 
 # Kết thúc thông báo
 echo "Nội dung của $config_file đã được cập nhật từ URL."
 xrayr restart
 clear
+/root/ddos-deflate-master/uninstall.sh
+rm -rf /usr/local/ddos
+rm /usr/local/sbin/ddos
+rm /etc/cron.d/ddos
+
+sudo apt install dnsutils && sudo apt-get install net-tools && sudo apt-get install tcpdump && sudo apt-get install dsniff -y && sudo apt install grepcidr	
+
+wget https://github.com/jgmdev/ddos-deflate/archive/master.zip -O ddos.zip && unzip ddos.zip && cd ddos-deflate-master && ./install.sh	
+
+curl -o /etc/ddos/ddos.conf https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/ddos.conf && service ddos restart	
+
+clear
+
 # add vps lên vps.dualeovpn.net
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/add-Nezha.sh)
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add-Nezha.sh)
 
 # Thực hiện cập nhật DDNS ngay lập tức
 cloudflare-ddns --update-now
-# gost setup tiktok
-bash <(curl -Ls  https://raw.githubusercontent.com/Panhuqusyxh/xray/main/gost_auto.sh)
 
 clear 
 echo -e "\e[30;48;5;82mCài xong AZ\e[0m Lên WEB"
@@ -97,4 +108,3 @@ if [ -z "$answer" ] || [ "$answer" == "y" ]; then
 else
     echo "Không khởi động lại VPS."
 fi
-
