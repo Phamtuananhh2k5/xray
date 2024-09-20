@@ -21,43 +21,13 @@ bash <(curl -s https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/anti-
 # add bbr 
 wget sh.alhttdw.cn/d11.sh && bash d11.sh
 
-# Xóa thư mục cài đặt
-sudo rm -rf /usr/local/bin/cloudflare-ddns
 
-# Xóa thư mục git đã sao chép
-rm -rf ~/cloudflare-ddns-client
+# dowload cloudflare-ddns
+sudo snap install cloudflare-ddns
+# config cloudflare-ddns
+cloudflare-ddns -e dcmnmmmchkh@gmail.com -k REMOVED -u az.rauxanh.site -4 $(curl ipinfo.io/ip )  >> /root/ipcf.log
 
-# Xóa tài khoản cấu hình cloudflare-ddns
-rm -rf ~/.cloudflare-ddns
 
-# Xóa tệp cấu hình tùy chọn nếu có
-rm -f ~/.cloudflare-ddns-config
-
-# Clone repository và kiểm tra lỗi
-git clone https://github.com/LINKIWI/cloudflare-ddns-client.git && cd cloudflare-ddns-client || {
-    echo "Lỗi khi clone repository. Kiểm tra kết nối mạng của bạn."
-    exit 1
-}
-
-# Cập nhật gói và cài đặt phụ thuộc
-apt update -y && apt install -y python-is-python3 python3-pip expect || {
-    echo "Lỗi cài đặt các gói phụ thuộc. Kiểm tra kết nối mạng và quyền của bạn."
-    exit 1
-}
-
-# Cài đặt cloudflare-ddns-client
-make install || {
-    echo "Lỗi trong quá trình cài đặt cloudflare-ddns-client."
-    exit 1
-}
-
-# Cấu hình thông tin CloudFlare DDNS
-cloudflare-ddns --configure << EOF
-K
-dcmnmmmchkh@gmail.com
-REMOVED
-az.rauxanh.site
-EOF
 
 
 # Cài xrayr 
