@@ -62,7 +62,7 @@ clear
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add-Nezha.sh)
 
 # Thực hiện cập nhật DDNS ngay lập tức
-sudo snap run cloudflare-ddns -e dcmnmmmchkh@gmail.com -k REMOVED -u az.rauxanh.site -4 $(curl -s ipinfo.io/ip) >> /root/ipcf.log 
+/root/cloudflare-update.sh
 
 clear 
 echo -e "\e[30;48;5;82mCài xong AZ\e[0m Lên WEB"
