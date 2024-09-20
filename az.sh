@@ -6,7 +6,6 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 #gost
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/gost_auto.sh)
 # update 
 sudo apt update -y && sudo apt upgrade -y && sudo apt install -y nano wget curl
 # gost
