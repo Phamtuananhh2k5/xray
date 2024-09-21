@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Cập nhật hệ thống và cài đặt WireGuard
-sudo apt update && sudo apt install wireguard -y
+sudo apt update && sudo apt install wireguard -y && sudo apt install resolvconf -y
+
 
 # Kiểm tra xem WireGuard đã được cài đặt thành công chưa
 if ! command -v wg > /dev/null 2>&1; then
