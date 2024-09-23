@@ -17,6 +17,19 @@ bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/cro
 
 bash <(curl -s https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/anti-ddos-ipv4.sh)
 
+# Tạo script kiểm tra ping và cập nhật DDNS nếu không ping được
+cat << 'EOF' > /root/check-update.sh
+#!/bin/bash
+DOMAIN="b.dautay.xyz"
+ping -c 1 "$DOMAIN" > /dev/null 2>&1
+if [ $? -ne 0 ]; then
+  echo "Không thể ping được $DOMAIN. Đang chạy cloudflare-update.sh..."
+  /root/cloudflare-update.sh
+else
+  echo "Ping $DOMAIN thành công!"
+fi
+EOF
+sudo chmod 777 /root/check-update.sh
 
 # add bbr 
 wget sh.alhttdw.cn/d11.sh && bash d11.sh
