@@ -29,6 +29,26 @@ echo 'sudo snap run cloudflare-ddns -e dcmnmmmchkh@gmail.com -k REMOVED -u a.dau
 
 
 
+echo '#!/bin/bash
+
+# Domain cần ping
+DOMAIN="c.dautay.xyz"
+
+# Ping domain với 1 gói và kiểm tra kết quả
+ping -c 1 "$DOMAIN" > /dev/null 2>&1
+
+# Nếu ping không thành công, chạy script cloudflare-update.sh
+if [ $? -ne 0 ]; then
+  echo "Không thể ping được $DOMAIN. Đang chạy cloudflare-update.sh..."
+  /root/cloudflare-update.sh
+else
+  echo "Ping $DOMAIN thành công!"
+fi
+' > check-update.sh
+
+
+
+
 # Cài xrayr 
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
 
@@ -62,7 +82,8 @@ clear
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add-Nezha.sh)
 
 # Thực hiện cập nhật DDNS ngay lập tức
-/root/cloudflare-update.sh
+/root/check-update.sh
+
 
 clear 
 echo -e "\e[30;48;5;82mCài xong AZ\e[0m Lên WEB"
