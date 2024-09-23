@@ -6,7 +6,7 @@ from ping3 import ping
 # Cấu hình API Cloudflare
 CF_API_TOKEN = 'REMOVED'
 CF_ZONE_ID = '7c559a7cb5be75c630994222fe114a22'
-CF_RECORD_NAME = 'a.dautay.xyz'
+CF_RECORD_NAME = 'b.dautay.xyz'
 
 # Hàm lấy IP hiện tại từ lệnh curl ifconfig.me
 def get_current_ip():
