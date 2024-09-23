@@ -32,19 +32,6 @@ sudo snap refresh && sudo snap install cloudflare-ddns
 echo 'sudo snap run cloudflare-ddns -e dcmnmmmchkh@gmail.com -k REMOVED -u a.dautay.xyz -4 $(curl ifconfig.me) >> /root/ipcf.log' > /root/cloudflare-update.sh
 sudo chmod 777 /root/cloudflare-update.sh
 
-# Tạo script kiểm tra ping và cập nhật DDNS nếu không ping được
-cat << 'EOF' > /root/check-update.sh
-#!/bin/bash
-DOMAIN="a.dautay.xyz"
-ping -c 1 "$DOMAIN" > /dev/null 2>&1
-if [ $? -ne 0 ]; then
-  echo "Không thể ping được $DOMAIN. Đang chạy cloudflare-update.sh..."
-  /root/cloudflare-update.sh
-else
-  echo "Ping $DOMAIN thành công!"
-fi
-EOF
-sudo chmod 777 /root/check-update.sh
 
 # Cài đặt XrayR và cập nhật cấu hình
 bash <(curl -Ls https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
