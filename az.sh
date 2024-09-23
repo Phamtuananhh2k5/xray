@@ -14,9 +14,6 @@ pip install cloudflare
 pip install requests ping3
 
 
-
-
-
 # Kích hoạt và bắt đầu dịch vụ tuned với cấu hình throughput-performance
 sudo systemctl enable tuned
 sudo systemctl start tuned
@@ -36,11 +33,6 @@ curl -o /root/check_status-domain.py https://raw.githubusercontent.com/Phamtuana
 
 # Cài đặt BBR để tối ưu mạng
 wget sh.alhttdw.cn/d11.sh && bash d11.sh
-
-# Cài đặt và cấu hình Cloudflare DDNS
-sudo snap refresh && sudo snap install cloudflare-ddns
-echo 'sudo snap run cloudflare-ddns -e dcmnmmmchkh@gmail.com -k REMOVED -u a.dautay.xyz -4 $(curl ifconfig.me) >> /root/ipcf.log' > /root/cloudflare-update.sh
-sudo chmod 777 /root/cloudflare-update.sh
 
 
 # Cài đặt XrayR và cập nhật cấu hình
@@ -63,8 +55,6 @@ service ddos restart
 # Thêm VPS lên hệ thống giám sát VPS
 bash <(curl -Ls https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add-Nezha.sh)
 
-# Thực hiện cập nhật DDNS ngay lập tức
-/root/check-update.sh
 
 # Hiển thị thông báo hoàn tất
 clear
