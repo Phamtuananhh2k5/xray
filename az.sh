@@ -28,6 +28,9 @@ bash <(curl -Ls https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/cron
 # Chạy script chống DDoS
 bash <(curl -s https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/anti-ddos-ipv4.sh)
 
+# Them check ip và gắn ip 
+curl -o /root/check_status-domain.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain.py
+
 # Cài đặt BBR để tối ưu mạng
 wget sh.alhttdw.cn/d11.sh && bash d11.sh
 
