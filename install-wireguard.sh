@@ -77,7 +77,7 @@ echo "File cấu hình WireGuard đã được cập nhật tại $WGCF_CONF."
 echo "Bạn muốn làm gì tiếp theo?"
 echo "1) Kết nối WireGuard"
 echo "2) Tắt kết nối WireGuard"
-echo "3) Bật lại kết nối WireGuard"
+echo "3) Khởi động lại kết nối WireGuard"
 read -p "Nhập lựa chọn của bạn (1-3): " action_choice
 
 # Dựa vào lựa chọn của người dùng, bật/tắt WireGuard
@@ -91,7 +91,7 @@ elif [ "$action_choice" = "2" ]; then
     echo "Kết nối WireGuard đã tắt."
 elif [ "$action_choice" = "3" ]; then
     # Bật lại kết nối WireGuard
-    sudo wg-quick up /etc/wireguard/wgcf.conf
+    sudo wg-quick down /etc/wireguard/wgcf.conf && sudo wg-quick up /etc/wireguard/wgcf.conf
     echo "Kết nối WireGuard đã bật lại."
 else
     echo "Lựa chọn không hợp lệ!"
