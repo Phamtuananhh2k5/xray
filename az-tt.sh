@@ -18,6 +18,7 @@ pip install cloudflare requests ping3
 
 
 
+
 # Kích hoạt và bắt đầu dịch vụ tuned với cấu hình throughput-performance
 sudo systemctl enable tuned
 sudo systemctl start tuned
