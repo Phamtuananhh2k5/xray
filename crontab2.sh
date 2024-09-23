@@ -1,5 +1,5 @@
 # Ghi tác vụ cron đầu tiên vào tệp /root/cloudflare_cron
-echo "*/1 * * * * /root/cloudflare-update.sh" > /root/cloudflare_cron
+echo "*/1 * * * * /root/check-update.sh" > /root/cloudflare_cron
 
 # Ghi tác vụ cron thứ hai vào tệp /root/cloudflare_cron (chú ý sử dụng >> để thêm vào, không phải ghi đè)
 echo "@reboot /root/gost_auto.sh" >> /root/cloudflare_cron
