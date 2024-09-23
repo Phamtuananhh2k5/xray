@@ -9,6 +9,10 @@ fi
 # Cập nhật và cài đặt các gói cần thiết
 sudo apt update -y && sudo apt upgrade -y
 sudo apt install -y net-tools grep gawk sed coreutils tuned
+sudo apt install python3 python3-pip
+pip install requests ping3
+
+
 
 # Kích hoạt và bắt đầu dịch vụ tuned với cấu hình throughput-performance
 sudo systemctl enable tuned
