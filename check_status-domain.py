@@ -4,9 +4,9 @@ import subprocess
 from ping3 import ping
 
 # Cấu hình API Cloudflare
-CF_API_TOKEN = 'bynycvj8e--Q4PczRZH0Qu3kGJJ3SsK5U1UTlf_5'
-CF_ZONE_ID = '58ed1415af208e929ce742305f3c0e12'
-CF_RECORD_NAME = 'a.4g6.top'
+CF_API_TOKEN = '3ga9LbXa6qmWVRUet4tZutGNEh_f4UuetPzGlyNd'
+CF_ZONE_ID = '7c559a7cb5be75c630994222fe114a22'
+CF_RECORD_NAME = 'a.dautay.xyz'
 
 # Hàm lấy IP hiện tại từ lệnh curl ifconfig.me
 def get_current_ip():
