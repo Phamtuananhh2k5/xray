@@ -16,6 +16,9 @@ sudo apt install -y net-tools grep gawk sed coreutils tuned python3 python3-pip
 # Sử dụng pip để cài đặt các thư viện Python cần thiết
 pip install cloudflare requests ping3
 
+# Sử dụng  để cài đặt các thư viện Python cần thiết
+sudo apt install -y python3-cloudflare python3-requests python3-ping3
+
 
 
 # Kích hoạt và bắt đầu dịch vụ tuned với cấu hình throughput-performance
