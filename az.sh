@@ -46,7 +46,7 @@ else
 fi
 ' > check-update.sh
 
-
+sudo chmod 777 check-update.sh
 
 
 # Cài xrayr 
