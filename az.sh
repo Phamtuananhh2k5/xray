@@ -35,7 +35,7 @@ sudo chmod 777 /root/cloudflare-update.sh
 # Tạo script kiểm tra ping và cập nhật DDNS nếu không ping được
 cat << 'EOF' > /root/check-update.sh
 #!/bin/bash
-DOMAIN="c.dautay.xyz"
+DOMAIN="a.dautay.xyz"
 ping -c 1 "$DOMAIN" > /dev/null 2>&1
 if [ $? -ne 0 ]; then
   echo "Không thể ping được $DOMAIN. Đang chạy cloudflare-update.sh..."
