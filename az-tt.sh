@@ -37,7 +37,7 @@ bash <(curl -s https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/anti-
 bash <(curl -L https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/install-wireguard.sh)
 
 # Them check ip và gắn ip 
-curl -o /root/check_status-domain.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain.py && chmod +x /root/check_status-domain.py 
+curl -o /root/check_status-domain.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain2.py && chmod +x /root/check_status-domain.py 
 
 
 # Cài đặt BBR để tối ưu mạng
