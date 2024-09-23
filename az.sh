@@ -7,11 +7,15 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Cập nhật và cài đặt các gói cần thiết
+# Cập nhật danh sách gói và nâng cấp tất cả gói hệ thống hiện có
 sudo apt update -y && sudo apt upgrade -y
-sudo apt install -y net-tools grep gawk sed coreutils tuned
-sudo apt install python3 python3-pip
-pip install cloudflare
-pip install requests ping3
+
+# Cài đặt các gói cần thiết trong một lệnh duy nhất
+sudo apt install -y net-tools grep gawk sed coreutils tuned python3 python3-pip
+
+# Sử dụng pip để cài đặt các thư viện Python cần thiết
+pip install cloudflare requests ping3
+
 
 
 # Kích hoạt và bắt đầu dịch vụ tuned với cấu hình throughput-performance
