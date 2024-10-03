@@ -48,7 +48,7 @@ sudo iptables -w -t security -X
 EOF' && \
 sudo chmod +x /etc/anti-ddos/script.sh && \
 (crontab -l ; echo "0 * * * * /etc/anti-ddos/script.sh") | sudo crontab - && \
-(crontab -l ; echo "* * * * * /etc/anti-ddos/etc/anti-ddos/check-ddos.sh") | sudo crontab - 
+(crontab -l ; echo "* * * * * /etc/anti-ddos/check-ddos.sh") | sudo crontab - 
 
 # service anti ddos Run Anti-DDoS Check every minute
 sudo bash -c 'echo "[Unit]
