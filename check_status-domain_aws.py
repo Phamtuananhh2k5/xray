@@ -4,9 +4,9 @@ import subprocess
 from ping3 import ping
 
 # Cấu hình API Cloudflare
-CF_API_TOKEN = 'REMOVED'
-CF_ZONE_ID = '49cd7086b2ba1f53c256851a9a0800b1'
-CF_RECORD_NAME = 'hk1.chomchom.top'
+CF_API_TOKEN = '31S6HnuIYVDzFj0N_dYM3q93Xt0F16rP0Bjme2m7'
+CF_ZONE_ID = '6861bf621cba2cb4ea0a2c01674c4cb6'
+CF_RECORD_NAME = 'a.hoalam.site'
 
 # Hàm lấy IP hiện tại từ lệnh curl ifconfig.me
 def get_current_ip():
@@ -16,6 +16,7 @@ def get_current_ip():
 # Hàm kiểm tra xem IP có ping được không
 def check_ping(ip):
     response = ping(ip, timeout=2)  # Thời gian chờ 2 giây
+    print(f"Kiểm tra ping cho IP {ip}: {'ping được' if response else 'không ping được'}")
     return response is not None
 
 # Hàm lấy các bản ghi A hiện có
@@ -74,48 +75,51 @@ def delete_record(record_id):
     else:
         print(f"Lỗi khi xóa bản ghi: {response.status_code} - {response.text}")
 
-# Hàm xóa toàn bộ các IP không ping được
-def delete_unpingable_records():
+# Hàm duy trì nhiều bản ghi IP hoạt động
+def maintain_multiple_active_records():
     a_records = get_a_records()  # Lấy danh sách các bản ghi A hiện có
     
-    for record in a_records:
-        ip = record['content']
-        record_id = record['id']
-        print(f"Đang kiểm tra IP: {ip}")
-
-        if not check_ping(ip):  # Nếu IP không ping được
-            print(f"IP {ip} không ping được, xóa bản ghi.")
-            delete_record(record_id)  # Xóa bản ghi
-        else:
-            print(f"IP {ip} ping được, giữ nguyên.")
-
-def main():
-    current_ip = get_current_ip()  # Lấy IP hiện tại từ curl ifconfig.me
-    print(f"IP hiện tại: {current_ip}")
+    active_ips = []
+    inactive_ips = []
     
-    a_records = get_a_records()  # Lấy danh sách các bản ghi hiện có
-    
-    # Kiểm tra xem có IP nào ping được không
-    any_ip_pingable = False
+    # Kiểm tra khả năng ping cho từng IP
     for record in a_records:
         ip = record['content']
         print(f"Đang kiểm tra IP: {ip}")
 
         if check_ping(ip):
             print(f"IP {ip} ping được.")
-            any_ip_pingable = True
+            active_ips.append(record)  # Lưu bản ghi IP ping được
         else:
             print(f"IP {ip} không ping được.")
+            inactive_ips.append(record)  # Lưu bản ghi IP không ping được
     
-    # Chỉ thêm IP mới nếu không có IP nào ping được
-    if not any_ip_pingable:
+    # Xóa tất cả các IP không ping được
+    for record in inactive_ips:
+        print(f"Xóa IP không ping được: {record['content']}")
+        delete_record(record['id'])
+    
+    # Nếu không có IP nào ping được, thêm IP mới
+    if len(active_ips) == 0:
+        current_ip = get_current_ip()
         print(f"Không có IP nào ping được. Thêm IP mới: {current_ip}")
         add_a_record(current_ip)
     else:
-        print(f"Đã có IP ping được. Không thêm IP mới.")
+        # Thêm các IP mới mà chưa có trong danh sách
+        existing_ips = {record['content'] for record in active_ips}
+        current_ip = get_current_ip()
 
-    # Xóa các IP không ping được
-    delete_unpingable_records()
+        if current_ip not in existing_ips:
+            print(f"Thêm IP mới: {current_ip}")
+            add_a_record(current_ip)
+
+# Chạy chính
+def main():
+    current_ip = get_current_ip()  # Lấy IP hiện tại từ curl ifconfig.me
+    print(f"IP hiện tại: {current_ip}")
+    
+    # Duy trì nhiều bản ghi IP hoạt động
+    maintain_multiple_active_records()
 
 if __name__ == "__main__":
     main()
