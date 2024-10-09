@@ -4,19 +4,18 @@ import subprocess
 from ping3 import ping
 
 # Cấu hình API Cloudflare
-CF_API_TOKEN = '31S6HnuIYVDzFj0N_dYM3q93Xt0F16rP0Bjme2m7'
-CF_ZONE_ID = '6861bf621cba2cb4ea0a2c01674c4cb6'
-CF_RECORD_NAME = 'a.hoalam.site'
+CF_API_TOKEN = 'qvPS6wL7_HlGwqxV-bMjU2uwD3-FFHeWESejuB3o'
+CF_ZONE_ID = 'd5e50070e3a994ccc7f8fda754e6938d'
+CF_RECORD_NAME = 'a.5vt.xyz'
 
-# Hàm lấy IP hiện tại từ lệnh curl ifconfig.me
+# Hàm lấy IP hiện tại từ lệnh curl ipinfo.io
 def get_current_ip():
-    result = subprocess.run(['curl', 'ifconfig.me'], stdout=subprocess.PIPE)
+    result = subprocess.run(['curl', 'ipinfo.io/ip'], stdout=subprocess.PIPE)
     return result.stdout.decode('utf-8').strip()
 
 # Hàm kiểm tra xem IP có ping được không
 def check_ping(ip):
     response = ping(ip, timeout=2)  # Thời gian chờ 2 giây
-    print(f"Kiểm tra ping cho IP {ip}: {'ping được' if response else 'không ping được'}")
     return response is not None
 
 # Hàm lấy các bản ghi A hiện có
