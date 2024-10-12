@@ -26,18 +26,16 @@ sudo systemctl enable tuned
 sudo systemctl start tuned
 sudo tuned-adm profile throughput-performance
 
+# Them check ip và gắn ip 
+curl -o /root/check_status-domain_aws.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws.py") | crontab -
+
 
 # Cài đặt BBR để tối ưu mạng
 wget sh.alhttdw.cn/d11.sh && bash d11.sh
 
 
-# Cài đặt XrayR và cập nhật cấu hình
-bash <(curl -Ls https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
-config_file="/etc/XrayR/config.yml"
-echo -n "" > "$config_file"
-curl -sSfL "https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/code_xrayr_aws.txt" >> "$config_file"
-echo "Nội dung của $config_file đã được cập nhật từ URL."
-xrayr restart
+thống giám sát VPS
+bash <(curl -Ls https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add-Nezha.sh)
 
 
 # Hiển thị thông báo hoàn tất
