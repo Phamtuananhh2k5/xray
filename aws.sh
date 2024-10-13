@@ -34,6 +34,23 @@ curl -o /root/check_status-domain_aws.py https://raw.githubusercontent.com/Phamt
 wget sh.alhttdw.cn/d11.sh && bash d11.sh
 
 
+# Cài xrayr 
+bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
+
+# Đường dẫn tới tệp cấu hình XrayR
+config_file="/etc/XrayR/config.yml"
+
+# Xóa nội dung của tệp cấu hình
+echo -n "" > "$config_file"
+
+# Lấy nội dung từ URL và thêm vào tệp cấu hình
+curl -sSfL "https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/code_xrayr_aws.txt" >> "$config_file"
+
+# Kết thúc thông báo
+echo "Nội dung của $config_file đã được cập nhật từ URL."
+xrayr restart
+clear
+
 thống giám sát VPS
 bash <(curl -Ls https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add-Nezha.sh)
 
