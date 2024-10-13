@@ -57,7 +57,7 @@ bash <(curl -Ls https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add-
 
 # Hiển thị thông báo hoàn tất
 clear
-echo -e "\e[30;48;5;82mCài xong AZ\e[0m Lên WEB"
+echo -e "\e[30;48;5;82mCài xong AWS\e[0m Lên WEB"
 
 # Hỏi người dùng có muốn khởi động lại VPS không
 echo "Bạn có muốn khởi động lại VPS không? (nhấn Enter để đồng ý, n để hủy)"
