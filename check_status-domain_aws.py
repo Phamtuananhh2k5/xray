@@ -3,10 +3,13 @@ import json
 import subprocess
 from ping3 import ping
 
-# Cấu hình API Cloudflare
+# Cấu hình API Cloudflare (thay thế giá trị bằng thông tin của bạn)
 CF_API_TOKEN = 'qvPS6wL7_HlGwqxV-bMjU2uwD3-FFHeWESejuB3o'
 CF_ZONE_ID = 'd5e50070e3a994ccc7f8fda754e6938d'
 CF_RECORD_NAME = 'a.5vt.xyz'
+
+# Các IP cần kiểm tra
+CHECK_IPS = ['43.240.220.179', '111.180.200.1', '117.50.76.1', '202.189.9.1']
 
 # Hàm lấy IP hiện tại từ lệnh curl ipinfo.io
 def get_current_ip():
@@ -20,6 +23,7 @@ def check_ping(ip):
 
 # Hàm lấy các bản ghi A hiện có
 def get_a_records():
+    print(f"Zone ID: {CF_ZONE_ID}")  # In ra Zone ID để kiểm tra
     url = f"https://api.cloudflare.com/client/v4/zones/{CF_ZONE_ID}/dns_records"
     headers = {
         "Authorization": f"Bearer {CF_API_TOKEN}",
@@ -74,6 +78,18 @@ def delete_record(record_id):
     else:
         print(f"Lỗi khi xóa bản ghi: {response.status_code} - {response.text}")
 
+# Hàm kiểm tra khả năng ping của các địa chỉ IP quan trọng
+def check_critical_ips():
+    all_pingable = True  # Biến đánh dấu xem tất cả IP có ping được không
+    for ip in CHECK_IPS:
+        if not check_ping(ip):
+            print(f"IP {ip} không ping được.")
+            all_pingable = False
+        else:
+            print(f"IP {ip} ping được.")
+    
+    return all_pingable
+
 # Hàm duy trì nhiều bản ghi IP hoạt động
 def maintain_multiple_active_records():
     a_records = get_a_records()  # Lấy danh sách các bản ghi A hiện có
@@ -112,9 +128,17 @@ def maintain_multiple_active_records():
             print(f"Thêm IP mới: {current_ip}")
             add_a_record(current_ip)
 
+    # Kiểm tra các IP quan trọng
+    if not check_critical_ips():
+        print("Không thể kết nối đến tất cả các IP quan trọng. Xóa IP của VPS.")
+        # Tìm bản ghi IP của VPS trong Cloudflare và xóa nó
+        for record in a_records:
+            if record['content'] == current_ip:
+                delete_record(record['id'])  # Xóa bản ghi DNS tương ứng với IP hiện tại
+
 # Chạy chính
 def main():
-    current_ip = get_current_ip()  # Lấy IP hiện tại từ curl ifconfig.me
+    current_ip = get_current_ip()  # Lấy IP hiện tại từ curl ipinfo.io
     print(f"IP hiện tại: {current_ip}")
     
     # Duy trì nhiều bản ghi IP hoạt động
