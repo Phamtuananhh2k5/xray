@@ -28,8 +28,12 @@ sudo tuned-adm profile throughput-performance
 
 # Them check ip và gắn ip 
 curl -o /root/check_status-domain_aws.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws.py") | crontab -
-# mail thay ip
+# mail check ip block
 curl -o /root/mail_check_block_china.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/mail_check_block_china.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/mail_check_block_china.py") | crontab -
+# tele check ip block
+curl -o /root/tele_check_block_china.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/tele_check_block_china.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/tele_check_block_china.py") | crontab -
+
+
 
 # Cài đặt BBR để tối ưu mạng
 wget sh.alhttdw.cn/d11.sh && bash d11.sh
