@@ -83,10 +83,10 @@ def check_critical_ips():
     all_pingable = True  # Biến đánh dấu xem tất cả IP có ping được không
     for ip in CHECK_IPS:
         if not check_ping(ip):
-            print(f"IP {ip} không ping được.")
+            print(f"IP quan trọng {ip} không ping được.")
             all_pingable = False
         else:
-            print(f"IP {ip} ping được.")
+            print(f"IP quan trọng {ip} ping được.")
     
     return all_pingable
 
@@ -129,7 +129,16 @@ def maintain_multiple_active_records():
             add_a_record(current_ip)
 
     # Kiểm tra các IP quan trọng
-    if not check_critical_ips():
+    non_pingable_ips = 0  # Đếm số IP không ping được
+    for ip in CHECK_IPS:
+        if not check_ping(ip):
+            print(f"IP quan trọng {ip} không ping được.")
+            non_pingable_ips += 1
+        else:
+            print(f"IP quan trọng {ip} ping được.")
+
+    # Nếu không ping được tất cả các IP quan trọng, xóa IP của VPS
+    if non_pingable_ips == len(CHECK_IPS):
         print("Không thể kết nối đến tất cả các IP quan trọng. Xóa IP của VPS.")
         # Tìm bản ghi IP của VPS trong Cloudflare và xóa nó
         for record in a_records:
