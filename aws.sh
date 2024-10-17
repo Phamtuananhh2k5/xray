@@ -25,6 +25,8 @@ sudo apt install -y python3-cloudflare python3-requests python3-ping3
 sudo systemctl enable tuned
 sudo systemctl start tuned
 sudo tuned-adm profile throughput-performance
+# dowload gost
+bash <(curl -fsSL https://github.com/go-gost/gost/raw/master/install.sh) --install
 
 # Them check ip và gắn ip 
 curl -o /root/check_status-domain_aws.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws.py") | crontab -
