@@ -4,9 +4,9 @@ import subprocess
 from ping3 import ping
 
 # Cấu hình API Cloudflare (thay thế giá trị bằng thông tin của bạn)
-CF_API_TOKEN = 'qvPS6wL7_HlGwqxV-bMjU2uwD3-FFHeWESejuB3o'
-CF_ZONE_ID = 'd5e50070e3a994ccc7f8fda754e6938d'
-CF_RECORD_NAME = 'a.5vt.xyz'
+CF_API_TOKEN = 'mi5dh1HxnaIx_xLiNLpbSdrUlsJSo2saQ_eHGpGv'
+CF_ZONE_ID = '3858af7284ac83995b7552a482438bef'
+CF_RECORD_NAME = 'maloi.fun'
 
 # Các IP cần kiểm tra
 CHECK_IPS = ['43.240.220.179', '111.180.200.1', '117.50.76.1', '202.189.9.1']
