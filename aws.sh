@@ -36,7 +36,8 @@ curl -o /root/mail_check_block_china.py https://raw.githubusercontent.com/Phamtu
 curl -o /root/tele_check_block_china.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/tele_check_block_china.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/tele_check_block_china.py") | crontab -
 # thêm gost 
 curl -o /root/gost_aws.sh https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/gost_aws.sh && chmod +x /root/gost_aws.sh && (crontab -l 2>/dev/null; echo "* * * * * /bin/bash /root/gost_aws.sh") | crontab -
-
+# swap
+fallocate -l 20G /swapfile3 && chmod 600 /swapfile3 && mkswap /swapfile3 && swapon /swapfile3 && echo '/swapfile3 none swap sw 0 0' | tee -a /etc/fstab s
 
 
 # Cài đặt BBR để tối ưu mạng
