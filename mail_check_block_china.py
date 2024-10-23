@@ -27,8 +27,8 @@ def ping_ip(ip):
 
 # Hàm gửi email
 def send_email(subject, body, to_emails):
-    from_email = "phamanh8084@gmail.com"
-    password = "lyxdlbjcvyavpjet"
+    from_email = "mail.check.block.dualeo@gmail.com"
+    password = "uzqamacikbqqufhl"
 
     msg = MIMEMultipart()
     msg['From'] = from_email
