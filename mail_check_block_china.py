@@ -83,7 +83,7 @@ if VPS_IP:
         if current_time - last_email_time > 1800:  # 30 phút = 1800 giây
             subject = f"IP máy chủ {VPS_IP} đã bị chặn tại Trung Quốc"
             body = f"IP máy chủ {VPS_IP} đã bị chặn tại Trung Quốc. Vui lòng đổi IP."
-            send_email(subject, body, ["thannhdinhdnbg@gmail.com", "thanhdinhbgdn@gmail.com"])  # Gửi tới hai địa chỉ email
+            send_email(subject, body, ["thanhdinhdnbg@gmail.com", "thanhdinhbgdn@gmail.com"])  # Gửi tới hai địa chỉ email
             save_last_email_time()  # Lưu thời gian gửi email hiện tại
         else:
             print("Đã gửi email cảnh báo trong vòng 30 phút trước, không gửi lại.")
