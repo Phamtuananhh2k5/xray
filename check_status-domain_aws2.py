@@ -5,8 +5,8 @@ from ping3 import ping
 
 # Cấu hình API Cloudflare (thay thế giá trị bằng thông tin của bạn)
 CF_API_TOKEN = '_2K7bBmkgaEKjIXeQTEOnkznaOoDXxW4N2C4BZ5D'
-CF_ZONE_ID = '3858af7284ac83995b7552a482438bef'
-CF_RECORD_NAME = 'maloi.fun'
+CF_ZONE_ID = '5118b1b1fb7765d272da71b7d84d33e7'
+CF_RECORD_NAME = 'thanhthanh.site'
 
 # Các IP cần kiểm tra
 CHECK_IPS = ['43.240.220.179', '111.180.200.1', '117.50.76.1', '202.189.9.1']
