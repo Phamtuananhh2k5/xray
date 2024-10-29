@@ -63,7 +63,15 @@ xrayr restart
 
 clear
 # Hỏi người dùng về số AWS
-read -p "Bạn đang chạy trên AWS số mấy? " AWS_NUMBER
+while true; do
+    read -p "Bạn đang chạy trên AWS số mấy? " AWS_NUMBER
+    if [[ "$AWS_NUMBER" =~ ^[1-8]$ ]]; then
+        echo "Bạn đã chọn AWS số $AWS_NUMBER."
+        break
+    else
+        echo "Vui lòng nhập số từ 1 đến 8."
+    fi
+done
 
 # Lưu số AWS vào file
 echo $AWS_NUMBER > /root/aws_number.txt
