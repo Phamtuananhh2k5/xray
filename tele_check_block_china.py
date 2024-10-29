@@ -15,10 +15,10 @@ CHAT_ID = 5179418894  # CHAT_ID của bạn
 # Hàm lấy IP của VPS từ ipinfo.io
 def get_vps_ip():
     try:
-        result = subprocess.run(['curl', '-s', 'ipinfo.io/ip'], stdout=subprocess.PIPE)
+        result = subprocess.run(['curl', '-s', 'ipinfo.io/ip'], stdout=subprocess.PIPE, check=True)
         vps_ip = result.stdout.decode('utf-8').strip()
         return vps_ip
-    except Exception as e:
+    except subprocess.CalledProcessError as e:
         print(f"Lỗi khi lấy IP của VPS: {e}")
         return None
 
