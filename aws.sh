@@ -60,6 +60,14 @@ curl -sSfL "https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/code_xra
 # Kết thúc thông báo
 echo "Nội dung của $config_file đã được cập nhật từ URL."
 xrayr restart
+
+clear
+# Hỏi người dùng về số AWS
+read -p "Bạn đang chạy trên AWS số mấy? " AWS_NUMBER
+
+# Lưu số AWS vào file
+echo $AWS_NUMBER > /root/aws_number.txt
+
 clear
 
 thống giám sát VPS
