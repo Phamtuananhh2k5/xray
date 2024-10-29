@@ -7,6 +7,8 @@ import requests
 CHECK_IPS = ['43.240.220.179', '111.180.200.1', '117.50.76.1', '202.189.9.1']
 # File để lưu thời gian gửi thông báo lần cuối
 LAST_NOTIFY_FILE = "/root/last_notify_time.txt"
+# File lưu số AWS
+AWS_NUMBER_FILE = "/root/aws_number.txt"
 
 # Thông tin của bot Telegram
 TELEGRAM_TOKEN = "REMOVED"  # Token bot của bạn
@@ -58,6 +60,16 @@ def save_last_notify_time():
     with open(LAST_NOTIFY_FILE, 'w') as file:
         file.write(str(time.time()))
 
+# Hàm lấy số AWS từ file
+def get_aws_number():
+    try:
+        with open(AWS_NUMBER_FILE, 'r') as file:
+            aws_number = file.read().strip()
+            return aws_number
+    except FileNotFoundError:
+        print("Không tìm thấy file lưu số AWS.")
+        return None
+
 # Lấy IP của VPS
 VPS_IP = get_vps_ip()
 
@@ -77,7 +89,11 @@ if VPS_IP:
         last_notify_time = get_last_notify_time()
         current_time = time.time()
         if current_time - last_notify_time > 1800:  # 30 phút = 1800 giây
+            aws_number = get_aws_number()  # Lấy số AWS từ file
+            # Tạo thông báo
             text = f"IP máy chủ {VPS_IP} đã bị chặn tại Trung Quốc. Vui lòng đổi IP."
+            if aws_number:  # Nếu số AWS có, thêm vào thông báo
+                text += f"\nSố AWS: {aws_number}"
             send_telegram_message(text)  # Gửi thông báo tới Telegram
             save_last_notify_time()  # Lưu thời gian gửi thông báo hiện tại
         else:
