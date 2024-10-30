@@ -9,3 +9,4 @@ nohup gost \
     -L "tcp://:10099/1.phamanh.id.vn:10099,2.phamanh.id.vn:10099,3.phamanh.id.vn:10099,4.phamanh.id.vn:10099,5.phamanh.id.vn:10099,103.187.5.188:10099?strategy=round&maxFails=1&failTimeout=300s" \
     -L "udp://:10099/1.phamanh.id.vn:10099,2.phamanh.id.vn:10099,3.phamanh.id.vn:10099,4.phamanh.id.vn:10099,5.phamanh.id.vn:10099,103.187.5.188:10099?strategy=round&maxFails=1&failTimeout=300s" \
     > /dev/null 2>&1 &
+
