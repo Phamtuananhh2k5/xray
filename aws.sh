@@ -64,7 +64,7 @@ xrayr restart
 clear
 # Hỏi người dùng về số AWS
 while true; do
-    read -p "Bạn đang chạy trên AWS số mấy? " AWS_NUMBER
+    read -p "Bạn đang chạy trên AWS số mấy? : " AWS_NUMBER
     if [[ "$AWS_NUMBER" =~ ^[1-8]$ ]]; then
         echo "Bạn đã chọn AWS số $AWS_NUMBER."
         break
