@@ -4,7 +4,7 @@ import subprocess
 from ping3 import ping
 
 # Cấu hình API Cloudflare
-CF_API_TOKEN = '3ga9LbXa6qmWVRUet4tZutGNEh_f4UuetPzGlyNd'
+CF_API_TOKEN = 'aR3wIq39PRpmNjgQ2OF9S1j_WzK5J3-lpZYZH4Uo'
 CF_ZONE_ID = '7c559a7cb5be75c630994222fe114a22'
 CF_RECORD_NAME = 'b.dautay.xyz'
 
