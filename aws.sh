@@ -83,11 +83,6 @@ xrayr restart
 
 
 
-clear
-
-thống giám sát VPS
-bash <(curl -Ls https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/add-Nezha.sh)
-
 
 # Hiển thị thông báo hoàn tất
 clear
