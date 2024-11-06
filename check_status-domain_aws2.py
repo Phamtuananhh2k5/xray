@@ -4,7 +4,7 @@ import subprocess
 from ping3 import ping
 
 # Cấu hình API Cloudflare (thay thế giá trị bằng thông tin của bạn)
-CF_API_TOKEN = '_2K7bBmkgaEKjIXeQTEOnkznaOoDXxW4N2C4BZ5D'
+CF_API_TOKEN = 'REMOVED'
 CF_ZONE_ID = '9dcb3257c2331ed6f0c6f3350fe9f6aa'
 CF_RECORD_NAME = 'annhien.top'
 
