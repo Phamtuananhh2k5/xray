@@ -4,7 +4,7 @@ import subprocess
 from ping3 import ping
 
 # Cấu hình API Cloudflare (thay thế giá trị bằng thông tin của bạn)
-CF_API_TOKEN = 'mi5dh1HxnaIx_xLiNLpbSdrUlsJSo2saQ_eHGpGv'
+CF_API_TOKEN = 'REMOVED'
 CF_ZONE_ID = '3858af7284ac83995b7552a482438bef'
 CF_RECORD_NAME = 'maloi.fun'
 
