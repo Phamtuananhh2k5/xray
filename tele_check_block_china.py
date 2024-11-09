@@ -4,7 +4,7 @@ import time
 import requests
 
 # Các IP cần kiểm tra
-CHECK_IPS = ['43.240.220.179', '111.180.200.1', '117.50.76.1', '202.189.9.1']
+CHECK_IPS = ['china.phamanh.id.vn', '111.180.200.1', '117.50.76.1', '202.189.9.1']
 # File để lưu thời gian gửi thông báo lần cuối
 LAST_NOTIFY_FILE = "/root/last_notify_time.txt"
 # File lưu số AWS
