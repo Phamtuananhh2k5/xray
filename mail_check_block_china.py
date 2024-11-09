@@ -10,7 +10,7 @@ import logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 # Các IP cần kiểm tra
-CHECK_IPS = ['43.240.220.179', '111.180.200.1', '117.50.76.1', '202.189.9.1']
+CHECK_IPS = ['china.phamanh.id.vn', '111.180.200.1', '117.50.76.1', '202.189.9.1']
 # File để lưu thời gian gửi email lần cuối
 LAST_EMAIL_FILE = "/root/last_email_time.txt"
 # File lưu số AWS
