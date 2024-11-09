@@ -12,7 +12,7 @@ AWS_NUMBER_FILE = "/root/aws_number.txt"
 
 # Thông tin của bot Telegram
 TELEGRAM_TOKEN = "REMOVED"  # Token bot của bạn
-CHAT_ID = 5179418894  # CHAT_ID của bạn
+CHAT_IDS = [5179418894, 5869289981]  # Danh sách CHAT_ID của bạn
 
 # Hàm lấy IP của VPS từ ipinfo.io
 def get_vps_ip():
@@ -32,19 +32,20 @@ def ping_ip(ip):
 # Hàm gửi thông báo qua Telegram
 def send_telegram_message(text):
     url = f"https://api.telegram.org/bot{TELEGRAM_TOKEN}/sendMessage"
-    payload = {
-        'chat_id': CHAT_ID,
-        'text': text
-    }
-    
-    try:
-        response = requests.post(url, json=payload)
-        if response.status_code == 200:
-            print("Thông báo đã được gửi đến Telegram.")
-        else:
-            print(f"Lỗi khi gửi thông báo: {response.text}")
-    except Exception as e:
-        print(f"Lỗi khi gửi thông báo: {e}")
+    for chat_id in CHAT_IDS:  # Lặp qua từng chat ID trong danh sách
+        payload = {
+            'chat_id': chat_id,
+            'text': text
+        }
+        
+        try:
+            response = requests.post(url, json=payload)
+            if response.status_code == 200:
+                print(f"Thông báo đã được gửi đến Telegram chat ID {chat_id}.")
+            else:
+                print(f"Lỗi khi gửi thông báo đến chat ID {chat_id}: {response.text}")
+        except Exception as e:
+            print(f"Lỗi khi gửi thông báo đến chat ID {chat_id}: {e}")
 
 # Hàm lấy thời gian gửi thông báo lần cuối từ file
 def get_last_notify_time():
