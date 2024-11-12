@@ -33,8 +33,8 @@ pre_install(){
     a=0
   while [ $a -lt $n ]
  do
-read -p "  Nhập domain web (không cần https://, Enter để sử dụng mặc định https://api.thanhthanh.site): " api_host
-[ -z "${api_host}" ] && api_host="https://api.thanhthanh.site"
+read -p "  Nhập domain web (không cần https://, Enter để sử dụng mặc định api.thanhthanh.site): " api_host
+[ -z "${api_host}" ] && api_host="api.thanhthanh.site"
 echo "--------------------------------"
 echo "  Web của bạn là https://${api_host}"
 echo "--------------------------------"
@@ -103,8 +103,8 @@ clone_node(){
   do
   
   #link web 
-read -p "  Nhập domain web (không cần https://, Enter để sử dụng mặc định https://api.thanhthanh.site): " api_host
-[ -z "${api_host}" ] && api_host="https://api.thanhthanh.site"
+read -p "  Nhập domain web (không cần https://, Enter để sử dụng mặc định api.thanhthanh.site): " api_host
+[ -z "${api_host}" ] && api_host="api.thanhthanh.site"
 echo "--------------------------------"
 echo "  Web của bạn là https://${api_host}"
 echo "--------------------------------"
