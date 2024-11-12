@@ -83,7 +83,7 @@ curl -sSfL "https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/code_xra
 echo "Nội dung của $config_file đã được cập nhật từ URL."
 xrayr restart
 
-
+systemctl daemon-reload
 
 
 # Hiển thị thông báo hoàn tất
