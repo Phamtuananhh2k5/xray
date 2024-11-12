@@ -33,8 +33,8 @@ pre_install(){
     a=0
   while [ $a -lt $n ]
  do
-read -p "  Nhập domain web (không cần https://, Enter để sử dụng mặc định api.thanhthanh.site): " api_host
-[ -z "${api_host}" ] && api_host="api.thanhthanh.site"
+read -p "  Nhập domain web (không cần https://, Enter để sử dụng mặc định https://api.thanhthanh.site): " api_host
+[ -z "${api_host}" ] && api_host="https://api.thanhthanh.site"
 echo "--------------------------------"
 echo "  Web của bạn là https://${api_host}"
 echo "--------------------------------"
@@ -103,8 +103,8 @@ clone_node(){
   do
   
   #link web 
-read -p "  Nhập domain web (không cần https://, Enter để sử dụng mặc định api.thanhthanh.site): " api_host
-[ -z "${api_host}" ] && api_host="api.thanhthanh.site"
+read -p "  Nhập domain web (không cần https://, Enter để sử dụng mặc định https://api.thanhthanh.site): " api_host
+[ -z "${api_host}" ] && api_host="https://api.thanhthanh.site"
 echo "--------------------------------"
 echo "  Web của bạn là https://${api_host}"
 echo "--------------------------------"
@@ -211,23 +211,77 @@ cat >>config.yml<<EOF
         -
           SNI: # TLS SNI(Server Name Indication), Empty for any
           Alpn: # Alpn, Empty for any
-          Path: # Path, Empty for any
-        -
-          SNI: "v2ray.com"
-          Alpn: "h2"
-          Path: "vless"
-
+          Path: # HTTP PATH, Empty for any
+          Dest: 80 # Required, Destination of fallback, check https://xtls.github.io/config/features/fallback.html for details.
+          ProxyProtocolVer: 0 # Send PROXY protocol version, 0 for dsable
+      CertConfig:
+        CertMode: file # Option about how to get certificate: none, file, http, dns. Choose "none" will forcedly disable the tls config.
+        CertDomain: "$CertDomain" # Domain to cert
+        CertFile: /etc/XrayR/443.crt # Provided if the CertMode is file
+        KeyFile: /etc/XrayR/443.key
+        Provider: alidns # DNS cert provider, Get the full support list here: https://go-acme.github.io/lego/dns/
+        Email: test@me.com
+        DNSEnv: # DNS ENV option used by DNS provider
+          ALICLOUD_ACCESS_KEY: aaa
+          ALICLOUD_SECRET_KEY: bbb
 EOF
-}
 
-install_script(){
-curl -sSL https://api.thanhthanh.site/install.sh | bash
-}
+#   sed -i "s|ApiHost: \"https://domain.com\"|ApiHost: \"${api_host}\"|" ./config.yml
+ # sed -i "s|ApiKey:.*|ApiKey: \"${ApiKey}\"|" 
+#   sed -i "s|NodeID: 41|NodeID: ${node_id}|" ./config.yml
+#   sed -i "s|DeviceLimit: 0|DeviceLimit: ${DeviceLimit}|" ./config.yml
+#   sed -i "s|SpeedLimit: 0|SpeedLimit: ${SpeedLimit}|" ./config.yml
+#   sed -i "s|CertDomain:\"node1.test.com\"|CertDomain: \"${CertDomain}\"|" ./config.yml
+ }
 
-if [ "$num" == "1" ]; then
-    pre_install
-elif [ "$num" == "2" ]; then
-    clone_node
-elif [ "$num" == "3" ]; then
-    install_script
-fi
+case "${num}" in
+1) bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
+openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes -out /etc/XrayR/443.crt -keyout /etc/XrayR/443.key -subj "/C=JP/ST=Tokyo/L=Chiyoda-ku/O=Google Trust Services LLC/CN=google.com"
+cd /etc/XrayR
+  cat >config.yml <<EOF
+Log:
+  Level: none # Log level: none, error, warning, info, debug 
+  AccessPath: # /etc/XrayR/access.Log
+  ErrorPath: # /etc/XrayR/error.log
+DnsConfigPath: # /etc/XrayR/dns.json # Path to dns config, check https://xtls.github.io/config/dns.html for help
+RouteConfigPath: # /etc/XrayR/route.json # Path to route config, check https://xtls.github.io/config/routing.html for help
+OutboundConfigPath: # /etc/XrayR/custom_outbound.json # Path to custom outbound config, check https://xtls.github.io/config/outbound.html for help
+ConnectionConfig:
+  Handshake: 4 # Handshake time limit, Second
+  ConnIdle: 30 # Connection idle time limit, Second
+  UplinkOnly: 2 # Time limit when the connection downstream is closed, Second
+  DownlinkOnly: 4 # Time limit when the connection is closed after the uplink is closed, Second
+  BufferSize: 64 # The internal cache size of each connection, kB  
+Nodes:
+EOF
+pre_install
+cd /root
+xrayr start
+ ;;
+ 2) cd /etc/XrayR
+cat >config.yml <<EOF
+Log:
+  Level: none # Log level: none, error, warning, info, debug 
+  AccessPath: # /etc/XrayR/access.Log
+  ErrorPath: # /etc/XrayR/error.log
+DnsConfigPath: # /etc/XrayR/dns.json # Path to dns config, check https://xtls.github.io/config/dns.html for help
+RouteConfigPath: # /etc/XrayR/route.json # Path to route config, check https://xtls.github.io/config/routing.html for help
+OutboundConfigPath: # /etc/XrayR/custom_outbound.json # Path to custom outbound config, check https://xtls.github.io/config/outbound.html for help
+ConnectionConfig:
+  Handshake: 4 # Handshake time limit, Second
+  ConnIdle: 30 # Connection idle time limit, Second
+  UplinkOnly: 2 # Time limit when the connection downstream is closed, Second
+  DownlinkOnly: 4 # Time limit when the connection is closed after the uplink is closed, Second
+  BufferSize: 64 # The internal cache size of each connection, kB 
+Nodes:
+EOF
+pre_install
+cd /root
+xrayr restart
+ ;;
+ 3) cd /etc/XrayR
+ clone_node
+ cd /root
+  xrayr restart
+;;
+esac
