@@ -5,7 +5,7 @@ from ping3 import ping
 
 # Cấu hình API Cloudflare (thay thế giá trị bằng thông tin của bạn)
 CF_API_TOKEN = 'REMOVED'
-CF_ZONE_ID = '3858af7284ac83995b7552a482438bef'
+CF_ZONE_ID = '69a64b1918cc9688e78286c560dfae36'
 CF_RECORD_NAME = 'a.anhthanh.com'
 
 # Các IP cần kiểm tra
