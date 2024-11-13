@@ -6,7 +6,7 @@ from ping3 import ping
 # Cấu hình API Cloudflare (thay thế giá trị bằng thông tin của bạn)
 CF_API_TOKEN = 'aR3wIq39PRpmNjgQ2OF9S1j_WzK5J3-lpZYZH4Uo'
 CF_ZONE_ID = 'ab7f270a3dc278d203be1b0bc8daa77a'
-CF_RECORD_NAME = '1.bongsen.site'
+CF_RECORD_NAME = '2.bongsen.site'
 
 # Các IP cần kiểm tra
 CHECK_IPS = ['43.240.220.179', '111.180.200.1', '117.50.76.1', '202.189.9.1']
