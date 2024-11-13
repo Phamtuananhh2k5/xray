@@ -64,6 +64,8 @@ curl -o /root/check_status-domain_aws12.py https://raw.githubusercontent.com/Pha
 curl -o /root/check_status-domain_aws13.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws13.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws13.py") | crontab -
 curl -o /root/check_status-domain_aws14.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws14.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws14.py") | crontab -
 curl -o /root/check_status-domain_aws15.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws15.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws15.py") | crontab -
+curl -o /root/check_status-domain_aws16.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws16.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws16.py") | crontab -
+
 
 
 # mail check ip block
