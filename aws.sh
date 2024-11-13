@@ -58,6 +58,13 @@ curl -o /root/check_status-domain_aws6.py https://raw.githubusercontent.com/Pham
 curl -o /root/check_status-domain_aws7.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws7.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws7.py") | crontab -
 curl -o /root/check_status-domain_aws8.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws8.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws8.py") | crontab -
 curl -o /root/check_status-domain_aws9.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws9.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws9.py") | crontab -
+curl -o /root/check_status-domain_aws10.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws10.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws10.py") | crontab -
+curl -o /root/check_status-domain_aws11.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws11.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws11.py") | crontab -
+curl -o /root/check_status-domain_aws12.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws12.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws12.py") | crontab -
+curl -o /root/check_status-domain_aws13.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws13.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws13.py") | crontab -
+curl -o /root/check_status-domain_aws14.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws14.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws14.py") | crontab -
+curl -o /root/check_status-domain_aws15.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws15.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws15.py") | crontab -
+
 
 # mail check ip block
 curl -o /root/mail_check_block_china.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/mail_check_block_china.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/mail_check_block_china.py") | crontab -
@@ -67,8 +74,6 @@ curl -o /root/tele_check_block_china.py https://raw.githubusercontent.com/Phamtu
 curl -o /root/gost_aws.sh https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/gost_aws.sh && chmod +x /root/gost_aws.sh && (crontab -l 2>/dev/null; echo "* * * * * /bin/bash /root/gost_aws.sh") | crontab -
 # swap
 fallocate -l 5G /swapfile3 && chmod 600 /swapfile3 && mkswap /swapfile3 && swapon /swapfile3 && echo '/swapfile3 none swap sw 0 0' | tee -a /etc/fstab s
-# ghi crontab -e 
-(crontab -l 2>/dev/null | grep -v '^\* \* \* \* \*' ; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws1.py"; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws2.py"; echo "* * * * * /usr/bin/python3 /root/mail_check_block_china.py"; echo "* * * * * /usr/bin/python3 /root/tele_check_block_china.py"; echo "* * * * * /bin/bash /root/gost_aws.sh") | crontab -
 
 
 # Cài đặt BBR để tối ưu mạng
