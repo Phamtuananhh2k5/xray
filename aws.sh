@@ -44,7 +44,7 @@ sudo apt install -y python3-cloudflare python3-requests python3-ping3
 # Kích hoạt và bắt đầu dịch vụ tuned với cấu hình throughput-performance
 sudo systemctl enable tuned
 sudo systemctl start tuned
-sudo tuned-adm profile throughput-performance
+sudo tuned-adm profile aws
 # dowload gost
 bash <(curl -fsSL https://github.com/go-gost/gost/raw/master/install.sh) --install
 
