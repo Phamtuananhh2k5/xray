@@ -56,6 +56,8 @@ curl -o /root/check_status-domain_aws4.py https://raw.githubusercontent.com/Pham
 curl -o /root/check_status-domain_aws5.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws5.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws5.py") | crontab -
 curl -o /root/check_status-domain_aws6.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws6.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws6.py") | crontab -
 curl -o /root/check_status-domain_aws7.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws7.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws7.py") | crontab -
+curl -o /root/check_status-domain_aws8.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws8.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws8.py") | crontab -
+curl -o /root/check_status-domain_aws9.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws9.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws9.py") | crontab -
 
 # mail check ip block
 curl -o /root/mail_check_block_china.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/mail_check_block_china.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/mail_check_block_china.py") | crontab -
