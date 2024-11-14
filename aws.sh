@@ -85,6 +85,10 @@ wget sh.alhttdw.cn/d11.sh && bash d11.sh
 # Cài xrayr 
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/xrayr1.sh)
 
+# get ssl 
+openssl req -newkey rsa:2048 -x509 -sha256 -days 365 -nodes -out /etc/XrayR/443.crt -keyout /etc/XrayR/443.key -subj "/C=JP/ST=Tokyo/L=Chiyoda-ku/O=Google Trust Services LLC/CN=google.com"
+
+
 # Đường dẫn tới tệp cấu hình XrayR
 config_file="/etc/XrayR/config.yml"
 
