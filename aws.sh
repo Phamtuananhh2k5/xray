@@ -49,24 +49,7 @@ sudo tuned-adm profile aws
 bash <(curl -fsSL https://github.com/go-gost/gost/raw/master/install.sh) --install
 
 # Them check ip và gắn ip 
-curl -o /root/check_status-domain_aws1.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws1.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws1.py") | crontab -
-curl -o /root/check_status-domain_aws2.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws2.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws2.py") | crontab -
-curl -o /root/check_status-domain_aws3.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws3.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws3.py") | crontab -
-curl -o /root/check_status-domain_aws4.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws4.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws4.py") | crontab -
-curl -o /root/check_status-domain_aws5.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws5.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws5.py") | crontab -
-curl -o /root/check_status-domain_aws6.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws6.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws6.py") | crontab -
-curl -o /root/check_status-domain_aws7.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws7.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws7.py") | crontab -
-curl -o /root/check_status-domain_aws8.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws8.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws8.py") | crontab -
-curl -o /root/check_status-domain_aws9.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws9.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws9.py") | crontab -
-curl -o /root/check_status-domain_aws10.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws10.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws10.py") | crontab -
-curl -o /root/check_status-domain_aws11.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws11.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws11.py") | crontab -
-curl -o /root/check_status-domain_aws12.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws12.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws12.py") | crontab -
-curl -o /root/check_status-domain_aws13.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws13.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws13.py") | crontab -
-curl -o /root/check_status-domain_aws14.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws14.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws14.py") | crontab -
-curl -o /root/check_status-domain_aws15.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws15.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws15.py") | crontab -
-curl -o /root/check_status-domain_aws16.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws16.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws16.py") | crontab -
-
-
+curl -o /root/check_status-domain_aws_all.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws_all.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws_all.py") | crontab -
 
 # mail check ip block
 curl -o /root/mail_check_block_china.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/mail_check_block_china.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/mail_check_block_china.py") | crontab -
