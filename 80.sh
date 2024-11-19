@@ -7,7 +7,7 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # Update and install required packages
-sudo apt update -y && sudo apt upgrade -y && sudo apt install -y net-tools grep gawk sed coreutils tuned 
+sudo apt update -y && sudo apt upgrade -y && sudo apt install -y net-tools grep gawk sed coreutils tuned && apt autoremove -y  
 
 sudo systemctl enable tuned && sudo systemctl start tuned && sudo tuned-adm profile throughput-performance
 
