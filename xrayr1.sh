@@ -110,7 +110,7 @@ install_XrayR() {
     cd /usr/local/XrayR/
 
     if [ $# == 0 ]; then
-        last_version="v0.8.8"
+        last_version="v0.9.0"
         echo -e "Bắt đầu cài đặt XrayR ${last_version}"
         wget -q -N --no-check-certificate -O /usr/local/XrayR/XrayR-linux.zip https://github.com/XrayR-project/XrayR/releases/download/${last_version}/XrayR-linux-${arch}.zip
         if [[ $? -ne 0 ]]; then
