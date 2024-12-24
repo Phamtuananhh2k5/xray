@@ -38,4 +38,4 @@ sudo systemctl restart ssh
 # Kiểm tra trạng thái của dịch vụ SSH
 sudo systemctl status ssh
 
-echo "Mật khẩu root đã được thay đổi và SSH đã được cấu hình lại thành công thành: Hoilamgi@12345."
+echo "Mật khẩu root đã được thay đổi và SSH đã được cấu hình lại thành công thành: Hoilamgi@12345"
