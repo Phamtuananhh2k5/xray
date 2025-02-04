@@ -97,4 +97,7 @@ EOF
 echo "Khởi động lại dịch vụ Fail2ban..."
 systemctl restart fail2ban
 
+# Kiểm tra trạng thái của dịch vụ Fail2ban
+sudo systemctl status fail2ban
+
 echo "Quá trình cài đặt và cấu hình Fail2ban cho SSH hoàn tất."
