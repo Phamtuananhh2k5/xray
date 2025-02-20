@@ -41,7 +41,7 @@ sudo systemctl restart ssh
 
 
 # Kiểm tra trạng thái của dịch vụ SSH
-sudo systemctl status ssh
+sudo systemctl status ssh --no-pager
 
 echo "Mật khẩu root đã được thay đổi và SSH đã được cấu hình lại thành công thành: Hoilamgi@12345"
 
@@ -98,6 +98,6 @@ echo "Khởi động lại dịch vụ Fail2ban..."
 systemctl restart fail2ban
 
 # Kiểm tra trạng thái của dịch vụ Fail2ban
-sudo systemctl status fail2ban
+sudo systemctl status fail2ban --no-pager
 
 echo "Quá trình cài đặt và cấu hình Fail2ban cho SSH hoàn tất, Mật khẩu cho root là Hoilamgi@12345"
