@@ -19,6 +19,8 @@ sudo rm -rf /etc/ssh
 # Xóa toàn bộ thư mục ~/.ssh của người dùng hiện tại
 sudo rm -rf ~/.ssh
 
+sudo apt update -y && sudo apt upgrade -y && sudo apt install -y net-tools grep gawk sed coreutils tuned && apt autoremove -y  
+
 sudo apt install openssh-server -y
 
 
