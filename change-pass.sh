@@ -6,7 +6,8 @@ if [[ $EUID -ne 0 ]]; then
 fi
 
 # Chạy apt update với tùy chọn -y để đồng ý với tất cả các yêu cầu
-sudo apt update -y
+sudo apt update -y && sudo apt upgrade -y && sudo apt install -y net-tools grep gawk sed coreutils tuned && apt autoremove -y  
+
 sudo apt install python3 python3-pip -y
 
 # Gỡ cài đặt openssh-server với tùy chọn -y để đồng ý với tất cả các yêu cầu
