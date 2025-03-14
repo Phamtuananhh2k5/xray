@@ -32,6 +32,8 @@ sudo tuned-adm profile throughput-performance
 curl -o /root/check_status-domain_aws_all.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws_all.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws_all.py") | crontab -
 # add information
 curl -o /root/information.txt https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/information.txt
+# mail check ip block
+curl -o /root/mail_check_block_china.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/mail_check_block_china.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/mail_check_block_china.py") | crontab -
 # swap
 fallocate -l 5G /swapfile3 && chmod 600 /swapfile3 && mkswap /swapfile3 && swapon /swapfile3 && echo '/swapfile3 none swap sw 0 0' | tee -a /etc/fstab s
 
