@@ -90,6 +90,7 @@ curl -o /etc/ddos/ddos.conf https://raw.githubusercontent.com/Phamtuananhh2k5/xr
 clear
 
 
+mkdir -p /etc/XrayR/ssl && openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/XrayR/ssl/sg.xn--nkvs42a.com.key -out /etc/XrayR/ssl/sg.xn--nkvs42a.com.crt -subj "/CN=sg.xn--nkvs42a.com"
 
 
 
