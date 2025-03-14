@@ -13,8 +13,6 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(
 CHECK_IPS = ['china.phamanh.id.vn', '111.180.200.1', '117.50.76.1', '202.189.9.1']
 # File để lưu thời gian gửi email lần cuối
 LAST_EMAIL_FILE = "/root/last_email_time.txt"
-# File lưu số AWS
-AWS_NUMBER_FILE = "/root/aws_number.txt"
 EMAIL_SENDER = "mail.check.block.dualeo@gmail.com"
 EMAIL_PASSWORD = "uzqamacikbqqufhl"  # Lưu mật khẩu trực tiếp trong mã (không khuyến khích)
 
@@ -35,18 +33,6 @@ def ping_ip(ip):
 
 # Hàm gửi email
 def send_email(subject, body, to_emails):
-    # Đọc số AWS từ file
-    aws_number = ""
-    try:
-        with open(AWS_NUMBER_FILE, 'r') as file:
-            aws_number = file.read().strip()
-    except FileNotFoundError:
-        logging.warning("Không tìm thấy file lưu số AWS.")
-
-    # Thêm số AWS vào nội dung email
-    if aws_number:
-        body += f"\n\nThông tin AWS: {aws_number}"
-
     msg = MIMEMultipart()
     msg['From'] = EMAIL_SENDER
     msg['To'] = ', '.join(to_emails)
@@ -59,10 +45,10 @@ def send_email(subject, body, to_emails):
             server.login(EMAIL_SENDER, EMAIL_PASSWORD)
             server.sendmail(EMAIL_SENDER, to_emails, msg.as_string())
             logging.info(f"Email đã được gửi tới {', '.join(to_emails)}")
-            print("Email đã được gửi thành công.")  # Thông báo cho người dùng
+            print("Email đã được gửi thành công.")
     except Exception as e:
         logging.error(f"Lỗi khi gửi email: {e}")
-        print("Gửi email không thành công. Vui lòng kiểm tra log để biết thêm chi tiết.")  # Thông báo lỗi cho người dùng
+        print("Gửi email không thành công. Vui lòng kiểm tra log để biết thêm chi tiết.")
 
 # Hàm lấy thời gian gửi email lần cuối từ file
 def get_last_email_time():
