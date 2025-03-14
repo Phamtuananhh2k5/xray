@@ -112,7 +112,13 @@ crontab /root/cloudflare_cron
 rm /root/cloudflare_cron
 
 
+# Them check ip và gắn ip 
+curl -o /root/check_status-domain_aws_all.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws_all.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws_all.py") | crontab -
 
+# add information
+curl -o /root/information.txt https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/information.txt
+# crontab 
+echo -e "* * * * * /usr/bin/python3 /root/mail_check_block_china.py\n* * * * * /usr/bin/python3 /root/tele_check_block_china.py\n* * * * * /bin/bash /root/gost_aws.sh\n* * * * * /usr/bin/python3 /root/check_status-domain_aws_all.py" | crontab -
 
 
 
