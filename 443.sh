@@ -64,14 +64,4 @@ systemctl daemon-reload
 
 # Hiển thị thông báo hoàn tất
 clear
-echo -e "\e[30;48;5;82mCài xong AWS\e[0m Lên WEB"
-
-# Hỏi người dùng có muốn khởi động lại VPS không
-echo "Bạn có muốn khởi động lại VPS không? (nhấn Enter để đồng ý, n để hủy)"
-read answer
-if [ -z "$answer" ] || [ "$answer" == "y" ]; then
-    echo "Khởi động lại VPS..."
-    sudo reboot
-else
-    echo "Không khởi động lại VPS."
-fi
+echo -e "\e[30;48;5;82mCài xong Linode\e[0m Lên WEB"
