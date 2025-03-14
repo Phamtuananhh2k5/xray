@@ -1,3 +1,16 @@
 CF_API_TOKEN = 'iBiFsDDdJNiZKC71-tmxCka5iaKozLmdqjhcPX0J'
 CF_ZONE_ID = '6d26f962ebe1c01f76fece4dfa4835cb'
 CF_RECORD_NAME = 'sg.xn--nkvs42a.com'
+
+CF_API_TOKEN = 'iBiFsDDdJNiZKC71-tmxCka5iaKozLmdqjhcPX0J'
+CF_ZONE_ID = '97ba8fa7677ba6c439840ba679d698b0'
+CF_RECORD_NAME = 'sv3.dualeovpn.net'
+
+CF_API_TOKEN = 'iBiFsDDdJNiZKC71-tmxCka5iaKozLmdqjhcPX0J'
+CF_ZONE_ID = '97ba8fa7677ba6c439840ba679d698b0'
+CF_RECORD_NAME = 'sv4.dualeovpn.net'
+
+CF_API_TOKEN = 'iBiFsDDdJNiZKC71-tmxCka5iaKozLmdqjhcPX0J'
+CF_ZONE_ID = '97ba8fa7677ba6c439840ba679d698b0'
+CF_RECORD_NAME = 'sv5.dualeovpn.net'
+
