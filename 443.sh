@@ -55,24 +55,6 @@ mkdir -p /etc/XrayR/ssl && openssl req -x509 -nodes -days 365 -newkey rsa:2048 -
 
 
 
-
-
-# Ghi tác vụ cron đầu tiên vào tệp /root/cloudflare_cron
-echo "*/1 * * * * /usr/local/bin/cloudflare-ddns --update-now >> /root/ipcf.log 2>&1" > /root/cloudflare_cron
-
-# Ghi tác vụ cron thứ hai vào tệp /root/cloudflare_cron (chú ý sử dụng >> để thêm vào, không phải ghi đè)
-echo "@reboot /root/gost_auto.sh" >> /root/cloudflare_cron
-
-# Ghi tác vụ cron thứ ba vào tệp /root/cloudflare_cron (chú ý sử dụng >> để thêm vào, không phải ghi đè)
-echo "0 * * * * rm -f /root/ipcf.log" >> /root/cloudflare_cron
-
-# Nhập tất cả tác vụ cron từ tệp tạm thời
-crontab /root/cloudflare_cron
-
-# Xóa tệp tạm thời
-rm /root/cloudflare_cron
-
-
 # Them check ip và gắn ip 
 curl -o /root/check_status-domain_aws_all.py https://raw.githubusercontent.com/Phamtuananhh2k5/xray/refs/heads/main/check_status-domain_aws_all.py && (crontab -l 2>/dev/null; echo "* * * * * /usr/bin/python3 /root/check_status-domain_aws_all.py") | crontab -
 
