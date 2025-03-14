@@ -13,7 +13,6 @@ sudo systemctl enable tuned && sudo systemctl start tuned && sudo tuned-adm prof
 
 
 bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/change-pass.sh)
-bash <(curl -Ls  https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/crontab.sh)
 
 bash <(curl -s https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/anti-ddos-ipv4.sh)
 
@@ -89,6 +88,42 @@ wget https://github.com/jgmdev/ddos-deflate/archive/master.zip -O ddos.zip && un
 curl -o /etc/ddos/ddos.conf https://raw.githubusercontent.com/Phamtuananhh2k5/xray/main/ddos.conf && service ddos restart	
 
 clear
+
+
+
+
+
+
+
+# Ghi tác vụ cron đầu tiên vào tệp /root/cloudflare_cron
+echo "*/1 * * * * /usr/local/bin/cloudflare-ddns --update-now >> /root/ipcf.log 2>&1" > /root/cloudflare_cron
+
+# Ghi tác vụ cron thứ hai vào tệp /root/cloudflare_cron (chú ý sử dụng >> để thêm vào, không phải ghi đè)
+echo "@reboot /root/gost_auto.sh" >> /root/cloudflare_cron
+
+# Ghi tác vụ cron thứ ba vào tệp /root/cloudflare_cron (chú ý sử dụng >> để thêm vào, không phải ghi đè)
+echo "0 * * * * rm -f /root/ipcf.log" >> /root/cloudflare_cron
+
+# Nhập tất cả tác vụ cron từ tệp tạm thời
+crontab /root/cloudflare_cron
+
+# Xóa tệp tạm thời
+rm /root/cloudflare_cron
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 # Thực hiện cập nhật DDNS ngay lập tức
