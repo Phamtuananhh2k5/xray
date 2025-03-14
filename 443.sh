@@ -119,13 +119,6 @@ rm /root/cloudflare_cron
 
 
 
-
-
-
-
-
-
-
 # Thực hiện cập nhật DDNS ngay lập tức
 cloudflare-ddns --update-now
 
