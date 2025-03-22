@@ -1,0 +1,13 @@
+watch -n 3 '
+  rm -f /root/ip-ddos.txt
+  netstat -an | grep "ESTABLISHED" \
+    | awk "{print \$5}" \
+    | grep -v "::" \
+    | sed "s/::ffff://" \
+    | cut -d":" -f1 \
+    | sort \
+    | uniq -c \
+    | awk "\$1 >= 0 {print \$2}" \
+    > /root/ip-ddos.txt
+  wc -l /root/ip-ddos.txt
+'
