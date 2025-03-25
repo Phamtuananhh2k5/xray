@@ -1,5 +1,8 @@
 watch -n 3 '
+  # Xoá file cũ
   rm -f /root/ip-ddos.txt
+
+  # Ghi lại các IP đang kết nối ESTABLISHED
   netstat -an | grep "ESTABLISHED" \
     | awk "{print \$5}" \
     | grep -v "::" \
@@ -9,5 +12,20 @@ watch -n 3 '
     | uniq -c \
     | awk "\$1 >= 0 {print \$2}" \
     > /root/ip-ddos.txt
+
+  # Hiển thị số lượng IP đang kết nối
+  echo -n "Số IP đang kết nối: "
   wc -l /root/ip-ddos.txt
+
+  # Hiển thị băng thông đang sử dụng (rx/tx trên eth0)
+  echo "Băng thông hiện tại (interface eth0):"
+  RX_PREV=$(cat /sys/class/net/eth0/statistics/rx_bytes)
+  TX_PREV=$(cat /sys/class/net/eth0/statistics/tx_bytes)
+  sleep 1
+  RX_CUR=$(cat /sys/class/net/eth0/statistics/rx_bytes)
+  TX_CUR=$(cat /sys/class/net/eth0/statistics/tx_bytes)
+  RX_RATE_Mbps=$(echo "scale=2; (($RX_CUR - $RX_PREV)*8)/1000000" | bc)
+  TX_RATE_Mbps=$(echo "scale=2; (($TX_CUR - $TX_PREV)*8)/1000000" | bc)
+  echo "  Download: ${RX_RATE_Mbps} Mbps"
+  echo "  Upload:   ${TX_RATE_Mbps} Mbps"
 '
