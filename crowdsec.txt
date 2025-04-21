@@ -16,3 +16,20 @@ sudo systemctl status crowdsec
 
 sudo apt install crowdsec-firewall-bouncer-iptables
 
+# /etc/msmtprc
+defaults
+auth           on
+tls            on
+tls_starttls   on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+auto_from      off
+
+account phamanh
+host     smtp.phamanh.io.vn
+port     587
+auth     on
+user     no-reply@phamanh.io.vn
+password Z9C3RFB2tUGN
+from     no-reply@phamanh.io.vn
+
+account default : phamanh
