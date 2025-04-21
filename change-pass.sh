@@ -100,6 +100,56 @@ EOF
 echo "Khởi động lại dịch vụ Fail2ban..."
 systemctl restart fail2ban
 
+#!/bin/bash
+
+# ==== CONFIG ====
+NEW_PORT=50022
+SSH_CONFIG="/etc/ssh/sshd_config"
+FAIL2BAN_JAIL="/etc/fail2ban/jail.local"
+LOG="/var/log/change_ssh_port.log"
+
+echo "[*] Đang đổi SSH sang port $NEW_PORT..." | tee -a $LOG
+
+# 1. Backup sshd_config
+cp "$SSH_CONFIG" "${SSH_CONFIG}.bak"
+echo "[+] Đã backup $SSH_CONFIG thành ${SSH_CONFIG}.bak" | tee -a $LOG
+
+# 2. Đổi port trong sshd_config
+if grep -q "^#Port" "$SSH_CONFIG"; then
+    sed -i "s/^#Port .*/Port $NEW_PORT/" "$SSH_CONFIG"
+elif grep -q "^Port" "$SSH_CONFIG"; then
+    sed -i "s/^Port .*/Port $NEW_PORT/" "$SSH_CONFIG"
+else
+    echo "Port $NEW_PORT" >> "$SSH_CONFIG"
+fi
+echo "[+] Đã cập nhật port SSH thành $NEW_PORT" | tee -a $LOG
+
+# 3. KHÔNG thay đổi logpath - vẫn là /var/log/auth.log
+
+# 4. Cập nhật Fail2Ban - chỉ sửa đúng block [sshd] hoặc thêm nếu chưa có
+if grep -q "^\[sshd\]" "$FAIL2BAN_JAIL"; then
+    # Nếu block đã có, sửa port trong vùng từ [sshd] đến dòng [khác] hoặc hết file
+    awk -v port="$NEW_PORT" '
+        BEGIN { in_block = 0 }
+        /^\[sshd\]/ { in_block = 1; print; next }
+        /^\[.*\]/ && in_block { in_block = 0 }
+        in_block && /^port[ \t]*=/ { print "port = " port; next }
+        { print }
+    ' "$FAIL2BAN_JAIL" > "${FAIL2BAN_JAIL}.tmp" && mv "${FAIL2BAN_JAIL}.tmp" "$FAIL2BAN_JAIL"
+else
+    echo -e "\n[sshd]\nport = $NEW_PORT\nlogpath = /var/log/auth.log" >> "$FAIL2BAN_JAIL"
+fi
+echo "[+] Đã cập nhật port Fail2Ban SSH" | tee -a $LOG
+
+# 5. Restart dịch vụ
+systemctl restart ssh && echo "[+] Đã restart SSHD" | tee -a $LOG
+systemctl restart fail2ban && echo "[+] Đã restart Fail2Ban" | tee -a $LOG
+
+# 6. Nhắc người dùng test lại
+echo "[*] ✅ HOÀN TẤT – Hãy kiểm tra SSH mới bằng:" | tee -a $LOG
+echo "    ssh -p $NEW_PORT user@your_ip" | tee -a $LOG
+
+
 # Kiểm tra trạng thái của dịch vụ Fail2ban
 sudo systemctl status fail2ban --no-pager
 
