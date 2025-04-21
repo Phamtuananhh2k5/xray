@@ -23,6 +23,8 @@ sudo apt update -y && sudo apt upgrade -y && sudo apt install -y net-tools grep 
 
 sudo apt install openssh-server -y
 
+sudo systemctl stop ssh.socket  && sudo systemctl disable ssh.socket
+
 
 # Thay đổi mật khẩu root
 echo "root:Hoilamgi@12345" | chpasswd
