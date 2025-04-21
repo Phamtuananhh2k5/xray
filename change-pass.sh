@@ -1,9 +1,17 @@
-#!/bin/bash
+#!/usr/bin/env bash
+set -euo pipefail
 
 LOG="/var/log/change_ssh_port.log"
 SSH_CONFIG="/etc/ssh/sshd_config"
 FAIL2BAN_JAIL="/etc/fail2ban/jail.local"
 NEW_PORT=50022
+
+# Thông số SMTP của bạn
+SMTP_HOST="smtp.phamanh.io.vn"
+SMTP_PORT="587"
+SMTP_USERNAME="no-reply@phamanh.io.vn"
+SMTP_PASSWORD="Z9C3RFB2tUGN"
+SMTP_FROM="no-reply@phamanh.io.vn"
 
 # Kiểm tra quyền root
 if [[ $EUID -ne 0 ]]; then
@@ -94,6 +102,49 @@ install_fail2ban() {
     fi
 }
 
+# Cấu hình msmtp
+configure_msmtp() {
+    echo "[*] Đang cấu hình msmtp..." | tee -a $LOG
+
+    # 1. Cập nhật và cài msmtp + msmtp-mta
+    sudo apt update
+    sudo apt install -y msmtp msmtp-mta
+
+    # 2. Backup file cũ nếu có
+    if [ -f /etc/msmtprc ]; then
+      TIMESTAMP=$(date +%s)
+      sudo mv /etc/msmtprc /etc/msmtprc.bak.$TIMESTAMP
+      echo "→ Đã backup /etc/msmtprc thành /etc/msmtprc.bak.$TIMESTAMP" | tee -a $LOG
+    fi
+
+    # 3. Tạo /etc/msmtprc mới theo đúng format yêu cầu
+    sudo tee /etc/msmtprc > /dev/null <<EOF
+# /etc/msmtprc
+defaults
+auth           on
+tls            on
+tls_starttls   on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+auto_from      off
+
+account phamanh
+host     ${SMTP_HOST}
+port     ${SMTP_PORT}
+auth     on
+user     ${SMTP_USERNAME}
+password ${SMTP_PASSWORD}
+from     ${SMTP_FROM}
+
+account default : phamanh
+EOF
+
+    # 4. Giới hạn quyền đọc file chỉ cho root
+    sudo chmod 600 /etc/msmtprc
+
+    echo "→ Đã cài đặt và cấu hình msmtp xong. 20 dòng đầu của /etc/msmtprc:" | tee -a $LOG
+    sudo sed -n '1,20p' /etc/msmtprc
+}
+
 # Main script
 update_system
 remove_old_ssh
@@ -103,6 +154,7 @@ install_fail2ban
 configure_fail2ban
 change_ssh_port
 restart_services
+configure_msmtp
 
 echo "[*] ✅ HOÀN TẤT – Hãy kiểm tra SSH mới bằng: ssh -p $NEW_PORT user@your_ip" | tee -a $LOG
 echo "[+] Mật khẩu root đã được thay đổi và SSH đã được cấu hình lại thành công thành: Hoilamgi@12345"
