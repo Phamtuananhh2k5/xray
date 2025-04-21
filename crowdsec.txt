@@ -4,6 +4,8 @@ check xem bản mới nhât crowdsec
 
 tải apt install crowdsec
 
+thay port crowdsec 
+
 sudo rm -f /etc/crowdsec/local_api_credentials.yaml
 
 sudo cscli machines add --auto
