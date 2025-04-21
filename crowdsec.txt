@@ -5,3 +5,11 @@ check xem bản mới nhât crowdsec
 tải apt install crowdsec
 
 
+sudo cscli machines add --auto
+
+sudo systemctl restart crowdsec
+
+sudo systemctl status crowdsec
+
+sudo apt install crowdsec-firewall-bouncer-iptables
+
