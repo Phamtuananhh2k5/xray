@@ -85,6 +85,10 @@ fi
 # Ghi cấu hình mới cho SSH. (Lưu ý: logpath trên Ubuntu là /var/log/auth.log,
 # trên CentOS có thể là /var/log/secure)
 cat > /etc/fail2ban/jail.local << 'EOF'
+[DEFAULT]
+sender = no-reply@phamanh.io.vn
+destemail = me@phamanh.io.vn, dcmnmmmchkh@gmail.com
+action = %(action_mwl)s
 
 [sshd]
 enabled = true
