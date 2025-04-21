@@ -108,6 +108,55 @@ EOF
 echo "Khởi động lại dịch vụ Fail2ban..."
 systemctl restart fail2ban
 
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Thông số SMTP của bạn
+SMTP_HOST="smtp.phamanh.io.vn"
+SMTP_PORT="587"
+SMTP_USERNAME="no-reply@phamanh.io.vn"
+SMTP_PASSWORD="Z9C3RFB2tUGN"
+SMTP_FROM="no-reply@phamanh.io.vn"
+
+# 1. Cập nhật và cài msmtp + msmtp-mta
+sudo apt update
+sudo apt install -y msmtp msmtp-mta
+
+# 2. Backup file cũ nếu có
+if [ -f /etc/msmtprc ]; then
+  TIMESTAMP=$(date +%s)
+  sudo mv /etc/msmtprc /etc/msmtprc.bak.$TIMESTAMP
+  echo "→ Đã backup /etc/msmtprc thành /etc/msmtprc.bak.$TIMESTAMP"
+fi
+
+# 3. Tạo /etc/msmtprc mới theo đúng format yêu cầu
+sudo tee /etc/msmtprc > /dev/null <<EOF
+# /etc/msmtprc
+defaults
+auth           on
+tls            on
+tls_starttls   on
+tls_trust_file /etc/ssl/certs/ca-certificates.crt
+auto_from      off
+
+account phamanh
+host     ${SMTP_HOST}
+port     ${SMTP_PORT}
+auth     on
+user     ${SMTP_USERNAME}
+password ${SMTP_PASSWORD}
+from     ${SMTP_FROM}
+
+account default : phamanh
+EOF
+
+# 4. Giới hạn quyền đọc file chỉ cho root
+sudo chmod 600 /etc/msmtprc
+
+echo "→ Đã cài đặt và cấu hình msmtp xong. 20 dòng đầu của /etc/msmtprc:"
+sudo sed -n '1,20p' /etc/msmtprc
+
+
 #!/bin/bash
 
 # ==== CONFIG ====
