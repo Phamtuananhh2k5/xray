@@ -1,0 +1,7 @@
+curl -s https://install.crowdsec.net | sudo sh
+
+check xem bản mới nhât crowdsec
+
+tải apt install crowdsec
+
+
