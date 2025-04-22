@@ -16,6 +16,9 @@ sudo systemctl status crowdsec
 
 sudo apt install crowdsec-firewall-bouncer-iptables
 
+cscli collections list -a | awk '/available/ {print $1}' | xargs -n1 cscli collections install
+
+
 # /etc/msmtprc
 defaults
 auth           on
