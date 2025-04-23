@@ -18,3 +18,15 @@ PersistentKeepalive = 15
 
 
 https://github.com/hwdsl2/openvpn-install
+
+[Interface]
+Address = 10.7.0.21/24, fddd:2c4:2c4:2c4::21/64
+DNS = 8.8.8.8, 8.8.4.4
+PrivateKey = 2OL8c/LeMc7ebsvKLl7e77Rr/2MdugjD4F1zqYikjkM=
+
+[Peer]
+PublicKey = /zcQAHTUWwjISl5ZvmbnkD1WyULc2bbceXyDpBBLJXY=
+PresharedKey = fcZvn0Ps4Tq6HHHRPpScR/Qe3bCTV7Bx2Rvm2o04Ao0=
+AllowedIPs = 0.0.0.0/0, ::/0
+Endpoint = 157.10.45.84:587
+PersistentKeepalive = 25
