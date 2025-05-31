@@ -1,2 +1,5 @@
 https://github.com/bin456789/reinstall
 cài lại hdh 
+
+https://github.com/sfiorini/NordVPN-Wireguard 
+nordvpn to wireguard 
