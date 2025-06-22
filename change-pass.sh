@@ -49,6 +49,23 @@ check_port_available() {
     fi
 }
 
+remove_ssh() {
+    log "Gỡ sạch SSH và xóa các tệp cấu hình liên quan..."
+
+    case "$OS_ID" in
+        ubuntu|debian)
+            apt purge -y openssh-server openssh-client
+            apt autoremove -y
+            ;;
+        centos|rhel|almalinux|rocky)
+            yum remove -y openssh-server openssh-clients || dnf remove -y openssh-server openssh-clients || true
+            ;;
+    esac
+
+    rm -rf /etc/ssh
+    rm -f "$SSH_CONFIG" "${SSH_CONFIG}.bak"
+}
+
 install_packages() {
     log "Cài đặt các gói cần thiết..."
     case "$OS_ID" in
@@ -185,6 +202,7 @@ warn_default_password() {
 # MAIN
 detect_os
 check_port_available
+remove_ssh
 install_packages
 configure_ssh
 configure_fail2ban
