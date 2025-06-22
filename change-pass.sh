@@ -156,6 +156,8 @@ EOF
 
 restart_services() {
     log "Kiểm tra cấu hình SSH..."
+    mkdir -p /run/sshd  # Fix lỗi thiếu thư mục khi cài mới
+
     sshd -t || {
         log "❌ Lỗi cấu hình SSH. Rollback."
         cp "${SSH_CONFIG}.bak" "$SSH_CONFIG"
